@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompTIA A+ Core 1 220-1201 Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700;900&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d12;
+    --bg2: #0f1318;
+    --bg3: #151b24;
+    --bg4: #1a2230;
+    --border: #1e2d40;
+    --border-bright: #2a4060;
+    --text: #c8d8e8;
+    --text-dim: #6a8aaa;
+    --text-bright: #e8f4ff;
+    --accent: #00b4ff;
+    --accent2: #00e5a0;
+    --accent3: #ff6b35;
+    --accent4: #ffd700;
+    --accent5: #b060ff;
+    --red: #ff4466;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; font-size:15px; line-height:1.7; }
+  body::before { content:''; position:fixed; inset:0; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,180,255,0.012) 2px,rgba(0,180,255,0.012) 4px); pointer-events:none; z-index:1000; }
+
+  /* HEADER */
+  .site-header { background:linear-gradient(135deg,#060b10 0%,#0a1520 50%,#060b10 100%); border-bottom:1px solid var(--border-bright); padding:3rem 2rem 2.5rem; text-align:center; position:relative; overflow:hidden; }
+  .site-header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,180,255,0.08) 0%,transparent 70%); }
+  .header-badge { display:inline-block; font-family:'Share Tech Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; color:var(--accent); background:rgba(0,180,255,0.08); border:1px solid rgba(0,180,255,0.3); padding:0.3rem 1rem; border-radius:2px; margin-bottom:1.2rem; }
+  .site-header h1 { font-family:'Exo 2',sans-serif; font-weight:900; font-size:clamp(2rem,5vw,3.5rem); color:var(--text-bright); letter-spacing:-0.02em; line-height:1.1; margin-bottom:0.5rem; position:relative; }
+  .site-header h1 span { color:var(--accent); text-shadow:0 0 30px rgba(0,180,255,0.4); }
+  .site-header .subtitle { font-family:'Share Tech Mono',monospace; color:var(--text-dim); font-size:0.85rem; letter-spacing:0.12em; margin-bottom:2rem; }
+  .header-stats { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; }
+  .stat-pill { font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:var(--text-dim); border:1px solid var(--border); padding:0.35rem 0.9rem; border-radius:20px; background:rgba(255,255,255,0.02); }
+  .stat-pill strong { color:var(--accent2); }
+
+  /* LAYOUT */
+  .container { max-width:1100px; margin:0 auto; padding:2rem 1.5rem; }
+
+  /* TOC */
+  .toc-nav { background:var(--bg2); border:1px solid var(--border); border-radius:4px; padding:1.5rem; margin-bottom:2.5rem; }
+  .toc-nav h2 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; color:var(--accent); text-transform:uppercase; margin-bottom:1rem; }
+  .toc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:0.4rem; }
+  .toc-item { display:flex; align-items:center; gap:0.6rem; padding:0.45rem 0.7rem; border-radius:3px; text-decoration:none; color:var(--text-dim); font-size:0.82rem; transition:all 0.15s; border:1px solid transparent; }
+  .toc-item:hover { color:var(--text-bright); background:rgba(0,180,255,0.06); border-color:var(--border); }
+  .toc-num { font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--accent); min-width:2rem; }
+
+  /* DOMAIN WEIGHTS */
+  .domain-weights { background:var(--bg2); border:1px solid var(--border); border-radius:4px; padding:1.5rem; margin-bottom:2.5rem; }
+  .domain-weights h2 { font-family:'Share Tech Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; color:var(--accent); margin-bottom:1.2rem; }
+  .weight-row { display:flex; align-items:center; gap:1rem; margin-bottom:0.7rem; font-size:0.8rem; }
+  .weight-label { min-width:240px; color:var(--text-dim); }
+  .weight-bar-bg { flex:1; height:6px; background:var(--bg4); border-radius:3px; overflow:hidden; }
+  .weight-bar { height:100%; border-radius:3px; }
+  .weight-pct { font-family:'Share Tech Mono',monospace; font-size:0.75rem; min-width:2.5rem; text-align:right; }
+
+  /* CHAPTERS */
+  .chapter { background:var(--bg2); border:1px solid var(--border); border-radius:4px; margin-bottom:2rem; overflow:hidden; }
+  .chapter-header { display:flex; align-items:center; gap:1.2rem; padding:1.2rem 1.5rem; border-bottom:1px solid var(--border); background:var(--bg3); }
+  .chapter-num { font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.15em; color:var(--accent); background:rgba(0,180,255,0.08); border:1px solid rgba(0,180,255,0.2); padding:0.25rem 0.6rem; border-radius:2px; white-space:nowrap; }
+  .chapter-title { font-family:'Exo 2',sans-serif; font-weight:700; font-size:1.1rem; color:var(--text-bright); flex:1; }
+  .chapter-obj { font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:var(--text-dim); background:var(--bg4); border:1px solid var(--border); padding:0.2rem 0.6rem; border-radius:2px; white-space:nowrap; }
+  .chapter-body { padding:1.5rem; }
+
+  /* SECTIONS */
+  .section-block { margin-bottom:1.5rem; }
+  .section-block:last-child { margin-bottom:0; }
+  .section-title { font-family:'Exo 2',sans-serif; font-weight:600; font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent2); margin-bottom:0.7rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:0.5rem; }
+  .section-title::before { content:'▸'; color:var(--accent); font-size:0.65rem; }
+
+  /* DEF GRID */
+  .def-grid { display:grid; grid-template-columns:minmax(160px,auto) 1fr; gap:0 1.2rem; font-size:0.83rem; }
+  .def-term { font-family:'Share Tech Mono',monospace; color:var(--accent4); padding:0.35rem 0; border-bottom:1px solid rgba(255,255,255,0.04); align-self:start; }
+  .def-val { color:var(--text); padding:0.35rem 0; border-bottom:1px solid rgba(255,255,255,0.04); line-height:1.5; }
+
+  /* TABLES */
+  .data-table { width:100%; border-collapse:collapse; font-size:0.8rem; margin-top:0.5rem; }
+  .data-table th { font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); background:var(--bg4); padding:0.6rem 0.8rem; text-align:left; border:1px solid var(--border); }
+  .data-table td { padding:0.5rem 0.8rem; border:1px solid var(--border); vertical-align:top; color:var(--text); }
+  .data-table tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
+  .data-table tr:hover td { background:rgba(0,180,255,0.04); }
+  .hl-blue { font-family:'Share Tech Mono',monospace; color:var(--accent); font-weight:bold; }
+  .hl-gold { font-family:'Share Tech Mono',monospace; color:var(--accent4); font-weight:bold; }
+  .good { color:var(--accent2); }
+  .bad { color:var(--red); }
+  .neutral { color:var(--text-dim); }
+
+  /* PORT GRID */
+  .port-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:0.35rem; }
+  .port-item { display:flex; align-items:center; gap:0.7rem; padding:0.4rem 0.7rem; background:var(--bg3); border:1px solid var(--border); border-radius:3px; font-size:0.8rem; }
+  .port-num { font-family:'Share Tech Mono',monospace; color:var(--accent); min-width:3.5rem; font-size:0.78rem; }
+  .port-proto { font-family:'Share Tech Mono',monospace; color:var(--text-dim); font-size:0.68rem; min-width:2.5rem; }
+  .port-name { color:var(--text); flex:1; }
+  .port-abbr { font-family:'Share Tech Mono',monospace; color:var(--text-dim); font-size:0.72rem; }
+
+  /* CALLOUTS */
+  .callout { border-left:3px solid; padding:0.8rem 1rem; border-radius:0 3px 3px 0; font-size:0.82rem; margin:0.8rem 0; line-height:1.55; }
+  .callout-exam { border-color:var(--accent4); background:rgba(255,215,0,0.05); color:var(--text); }
+  .callout-exam::before { content:'★ EXAM TIP  '; font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; color:var(--accent4); display:block; margin-bottom:0.35rem; }
+  .callout-warning { border-color:var(--accent3); background:rgba(255,107,53,0.05); color:var(--text); }
+  .callout-warning::before { content:'⚠ CRITICAL  '; font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; color:var(--accent3); display:block; margin-bottom:0.35rem; }
+  .callout-mil { border-color:var(--accent5); background:rgba(176,96,255,0.05); color:var(--text); }
+  .callout-mil::before { content:'⬡ ANALOGY  '; font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; color:var(--accent5); display:block; margin-bottom:0.35rem; }
+
+  /* LISTS */
+  .concept-list { list-style:none; font-size:0.83rem; }
+  .concept-list li { padding:0.25rem 0 0.25rem 1.2rem; position:relative; color:var(--text); border-bottom:1px solid rgba(255,255,255,0.03); }
+  .concept-list li::before { content:'›'; position:absolute; left:0; color:var(--accent); font-family:'Share Tech Mono',monospace; }
+  .concept-list li strong { color:var(--text-bright); font-weight:600; }
+  .concept-list li code { font-family:'Share Tech Mono',monospace; background:var(--bg4); border:1px solid var(--border); padding:0.05rem 0.35rem; border-radius:2px; font-size:0.8em; color:var(--accent2); }
+
+  /* TS STEPS */
+  .ts-steps { counter-reset:ts; }
+  .ts-step { display:flex; gap:1rem; padding:0.6rem 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:0.83rem; align-items:flex-start; }
+  .ts-step::before { counter-increment:ts; content:counter(ts); font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--accent); background:rgba(0,180,255,0.1); border:1px solid rgba(0,180,255,0.25); width:1.6rem; height:1.6rem; border-radius:2px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.1rem; }
+
+  /* TWO-COL */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; }
+
+  /* TAGS */
+  .tag-row { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.4rem; }
+  .tag { font-family:'Share Tech Mono',monospace; font-size:0.7rem; padding:0.2rem 0.55rem; border-radius:2px; border:1px solid; }
+  .tag-blue { color:var(--accent); border-color:rgba(0,180,255,0.3); background:rgba(0,180,255,0.06); }
+  .tag-green { color:var(--accent2); border-color:rgba(0,229,160,0.3); background:rgba(0,229,160,0.06); }
+  .tag-orange { color:var(--accent3); border-color:rgba(255,107,53,0.3); background:rgba(255,107,53,0.06); }
+  .tag-gold { color:var(--accent4); border-color:rgba(255,215,0,0.3); background:rgba(255,215,0,0.06); }
+  .tag-purple { color:var(--accent5); border-color:rgba(176,96,255,0.3); background:rgba(176,96,255,0.06); }
+
+  /* MINI HEADER */
+  .mini-h { font-family:'Share Tech Mono',monospace; font-size:0.72rem; color:var(--text-dim); letter-spacing:0.12em; text-transform:uppercase; margin:0.8rem 0 0.4rem; }
+
+  /* FOOTER */
+  .site-footer { text-align:center; padding:2rem; border-top:1px solid var(--border); font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--text-dim); letter-spacing:0.1em; margin-top:2rem; }
+
+  [id] { scroll-margin-top:1rem; }
+  p { font-size:0.83rem; color:var(--text); margin-bottom:0.6rem; }
+
+  @media(max-width:640px){
+    .two-col,.three-col { grid-template-columns:1fr; }
+    .header-stats { gap:0.8rem; }
+    .toc-grid { grid-template-columns:1fr; }
+    .port-grid { grid-template-columns:1fr; }
+    .def-grid { grid-template-columns:1fr; gap:0; }
+    .def-term { border-bottom:none; padding-bottom:0; font-size:0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-badge">220-1201 CERTIFICATION PREP</div>
+  <h1>CompTIA <span>A+ Core 1</span> Study Guide</h1>
+  <p class="subtitle">SYNTHESIZED FROM STAR V LEARNING CENTERS COURSE MATERIALS · JACKSONVILLE, FL</p>
+  <div class="header-stats">
+    <span class="stat-pill"><strong>16</strong> Sections</span>
+    <span class="stat-pill"><strong>5</strong> Exam Domains</span>
+    <span class="stat-pill">Exam <strong>220-1201</strong></span>
+    <span class="stat-pill">All Objectives <strong>Covered</strong></span>
+  </div>
+</header>
+
+<div class="container">
+
+  <nav class="toc-nav">
+    <h2>// Table of Contents</h2>
+    <div class="toc-grid">
+      <a class="toc-item" href="#ch1"><span class="toc-num">01</span> IT Fundamentals & Troubleshooting</a>
+      <a class="toc-item" href="#ch2"><span class="toc-num">02</span> Cables, Connectors & Interfaces</a>
+      <a class="toc-item" href="#ch3"><span class="toc-num">03</span> Motherboards</a>
+      <a class="toc-item" href="#ch4"><span class="toc-num">04</span> Power Supplies & Cooling</a>
+      <a class="toc-item" href="#ch5"><span class="toc-num">05</span> Processors (CPUs)</a>
+      <a class="toc-item" href="#ch6"><span class="toc-num">06</span> System Memory (RAM)</a>
+      <a class="toc-item" href="#ch7"><span class="toc-num">07</span> Storage Devices</a>
+      <a class="toc-item" href="#ch8"><span class="toc-num">08</span> BIOS/UEFI & Boot Process</a>
+      <a class="toc-item" href="#ch9"><span class="toc-num">09</span> Networking Hardware</a>
+      <a class="toc-item" href="#ch10"><span class="toc-num">10</span> Network Cabling</a>
+      <a class="toc-item" href="#ch11"><span class="toc-num">11</span> IP Addressing & Network Config</a>
+      <a class="toc-item" href="#ch12"><span class="toc-num">12</span> Network Services</a>
+      <a class="toc-item" href="#ch13"><span class="toc-num">13</span> Virtualization & Cloud</a>
+      <a class="toc-item" href="#ch14"><span class="toc-num">14</span> Mobile Devices</a>
+      <a class="toc-item" href="#ch15"><span class="toc-num">15</span> Printers & Multifunction Devices</a>
+      <a class="toc-item" href="#ch16"><span class="toc-num">16</span> Security Fundamentals</a>
+    </div>
+  </nav>
+
+  <div class="domain-weights">
+    <h2>// Exam Domain Weights (220-1201)</h2>
+    <div class="weight-row"><span class="weight-label">1. Mobile Devices</span><div class="weight-bar-bg"><div class="weight-bar" style="width:15%;background:var(--accent)"></div></div><span class="weight-pct" style="color:var(--accent)">15%</span></div>
+    <div class="weight-row"><span class="weight-label">2. Networking</span><div class="weight-bar-bg"><div class="weight-bar" style="width:20%;background:var(--accent2)"></div></div><span class="weight-pct" style="color:var(--accent2)">20%</span></div>
+    <div class="weight-row"><span class="weight-label">3. Hardware</span><div class="weight-bar-bg"><div class="weight-bar" style="width:25%;background:var(--accent4)"></div></div><span class="weight-pct" style="color:var(--accent4)">25%</span></div>
+    <div class="weight-row"><span class="weight-label">4. Virtualization & Cloud Computing</span><div class="weight-bar-bg"><div class="weight-bar" style="width:11%;background:var(--accent3)"></div></div><span class="weight-pct" style="color:var(--accent3)">11%</span></div>
+    <div class="weight-row"><span class="weight-label">5. Hardware & Network Troubleshooting</span><div class="weight-bar-bg"><div class="weight-bar" style="width:29%;background:var(--accent5)"></div></div><span class="weight-pct" style="color:var(--accent5)">29%</span></div>
+  </div>
+
+  <!-- ═══ CH1 – IT FUNDAMENTALS ═══ -->
+  <section class="chapter" id="ch1">
+    <div class="chapter-header">
+      <span class="chapter-num">01</span>
+      <h2 class="chapter-title">IT Fundamentals & Troubleshooting Methodology</h2>
+      <span class="chapter-obj">Domain 5</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">The Role of an IT Specialist</div>
+        <ul class="concept-list">
+          <li>Troubleshoot and resolve hardware, software, and network issues.</li>
+          <li>Set up and configure new systems and peripherals.</li>
+          <li>Provide ongoing support for existing systems and end users.</li>
+          <li>Key skills: problem-solving, communication, documentation, and technical knowledge.</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">CompTIA Troubleshooting Methodology — 7 Steps</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Identify the problem.</strong> Question the user. Identify any recent changes to hardware, software, or environment. Review event logs. Determine scope — one user or many?</div>
+          <div class="ts-step"><strong>Establish a theory of probable cause.</strong> Consider possible causes, start simple (is it plugged in?). Question the obvious before assuming complexity.</div>
+          <div class="ts-step"><strong>Test the theory.</strong> Physical inspection, reproduce the problem, check documentation. If theory confirmed → move on. If not → establish new theory or escalate.</div>
+          <div class="ts-step"><strong>Establish a plan of action.</strong> Assess cost, time, resources, and impact. Seek authorization from the appropriate person. Adhere to policies and procedures.</div>
+          <div class="ts-step"><strong>Implement the solution.</strong> Choose best time (off-hours if possible). Notify impacted users. Follow vendor instructions. Make one change at a time.</div>
+          <div class="ts-step"><strong>Verify full system functionality.</strong> Confirm the fix works. Implement preventive measures so the issue doesn't recur.</div>
+          <div class="ts-step"><strong>Document findings, actions, and outcomes.</strong> Record what the problem was, what caused it, what fixed it, and what was done to prevent recurrence.</div>
+        </div>
+        <div class="callout callout-mil">This is your SMEAC for tech problems — same structured approach every time. The exam will give you scenarios and ask which step comes next. Know the order cold. "Test the theory" always comes before "establish a plan of action."</div>
+        <div class="callout callout-exam">The exam frequently asks what to do when a theory is NOT confirmed — the answer is to establish a new theory or escalate. Never skip to implementation without a confirmed theory.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH2 – CABLES & CONNECTORS ═══ -->
+  <section class="chapter" id="ch2">
+    <div class="chapter-header">
+      <span class="chapter-num">02</span>
+      <h2 class="chapter-title">Cables, Connectors & Interfaces</h2>
+      <span class="chapter-obj">Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">USB Standards</div>
+        <table class="data-table">
+          <thead><tr><th>Standard</th><th>Year</th><th>Max Speed</th><th>Connector</th><th>Also Called</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">USB 1.1</span></td><td>1998</td><td>12 Mbps</td><td>Type-A, Type-B</td><td>Full Speed</td></tr>
+            <tr><td><span class="hl-gold">USB 2.0</span></td><td>2000</td><td>480 Mbps</td><td>Type-A, Mini, Micro</td><td>Hi-Speed</td></tr>
+            <tr><td><span class="hl-gold">USB 3.0</span></td><td>2008</td><td>5 Gbps</td><td>Type-A (blue), Type-C</td><td>USB 3.1 Gen 1 / SuperSpeed</td></tr>
+            <tr><td><span class="hl-gold">USB 3.1</span></td><td>2013</td><td>10 Gbps</td><td>Type-C</td><td>USB 3.1 Gen 2 / SuperSpeed+</td></tr>
+            <tr><td><span class="hl-gold">USB 3.2</span></td><td>2017</td><td>20 Gbps</td><td>Type-C</td><td>Gen 2×2</td></tr>
+            <tr><td><span class="hl-gold">USB4</span></td><td>2019</td><td>40 Gbps</td><td>Type-C only</td><td>Unified with Thunderbolt 3</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">USB 3.0 ports are blue. USB 3.1 Gen 1 = USB 3.0 (5 Gbps). USB 3.1 Gen 2 = 10 Gbps. The naming is deliberately confusing — know what each speed maps to.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">USB Connector Types</div>
+        <div class="def-grid">
+          <span class="def-term">Type-A</span><span class="def-val">Rectangular. Standard host/PC side connector. On nearly every computer. USB 1.1 through USB 3.2.</span>
+          <span class="def-term">Type-B</span><span class="def-val">Square. Device side for large peripherals (printers, scanners). Less common now.</span>
+          <span class="def-term">Mini-B</span><span class="def-val">Smaller than Type-B. Older cameras and devices. Largely obsolete.</span>
+          <span class="def-term">Micro-B</span><span class="def-val">Flat, small. Was the standard for Android phones. Still common on budget devices.</span>
+          <span class="def-term">Type-C</span><span class="def-val">Reversible — no wrong way to plug in. Used for USB 3.1+, USB4, and Thunderbolt 3/4/5. Single connector for power, data, and video.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Thunderbolt Interface</div>
+        <table class="data-table">
+          <thead><tr><th>Version</th><th>Speed</th><th>Connector</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">TB 1</span></td><td>10 Gbps</td><td>Mini DisplayPort</td><td>Compatible with DisplayPort devices.</td></tr>
+            <tr><td><span class="hl-gold">TB 2</span></td><td>20 Gbps</td><td>Mini DisplayPort</td><td>Aggregates two TB1 channels.</td></tr>
+            <tr><td><span class="hl-gold">TB 3</span></td><td>40 Gbps</td><td>USB-C</td><td>Supports 2×4K displays. Unified with USB4.</td></tr>
+            <tr><td><span class="hl-gold">TB 4</span></td><td>40 Gbps</td><td>USB-C</td><td>Stricter certification than TB3. Up to 4 daisy-chained devices.</td></tr>
+            <tr><td><span class="hl-gold">TB 5</span></td><td>80+ Gbps</td><td>USB-C</td><td>Latest generation. Supports 3×4K or 1×8K displays.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">Thunderbolt ports are identified by a lightning bolt icon (⚡). TB3 and TB4 use USB-C connectors but are NOT the same as USB-C. A Thunderbolt device will work in a USB-C port at USB speeds only, not at Thunderbolt speeds.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Video Connectors</div>
+        <table class="data-table">
+          <thead><tr><th>Connector</th><th>Signal</th><th>Audio</th><th>Key Facts</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">VGA</span></td><td>Analog</td><td><span class="bad">No</span></td><td>15-pin DB-15 (HD-15). Legacy. Still common on projectors and older monitors. Cannot carry digital signal natively.</td></tr>
+            <tr><td><span class="hl-gold">DVI-A</span></td><td>Analog only</td><td><span class="bad">No</span></td><td>Analog DVI. Can connect to VGA via passive adapter.</td></tr>
+            <tr><td><span class="hl-gold">DVI-D</span></td><td>Digital only</td><td><span class="bad">No</span></td><td>Digital DVI. Single-link (3.96 Gbps) or Dual-link (7.92 Gbps).</td></tr>
+            <tr><td><span class="hl-gold">DVI-I</span></td><td>Both</td><td><span class="bad">No</span></td><td>Integrated — carries both analog and digital. Most flexible DVI type.</td></tr>
+            <tr><td><span class="hl-gold">HDMI</span></td><td>Digital</td><td><span class="good">Yes</span></td><td>Carries audio + video on one cable. Consumer standard for TVs and monitors. Supports HDR, ARC, CEC. Multiple versions (1.4 = 4K@30Hz, 2.0 = 4K@60Hz, 2.1 = 8K).</td></tr>
+            <tr><td><span class="hl-gold">DisplayPort</span></td><td>Digital</td><td><span class="good">Yes</span></td><td>PC/professional standard. Supports MST (daisy-chain multiple displays from one port). Adaptive sync (G-Sync/FreeSync). Mini DisplayPort = same signal, smaller connector (used on MacBooks, Thunderbolt 1/2).</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">DVI-I carries both analog and digital — it can connect to VGA (analog) or DVI-D (digital). DVI-D is digital only — cannot connect to VGA without an active adapter. VGA to DVI-D requires an active converter, not a passive adapter.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Storage Interface Cables</div>
+        <div class="def-grid">
+          <span class="def-term">SATA Data (7-pin)</span><span class="def-val">L-shaped. Connects HDD/SSD to motherboard SATA port. Max 6 Gbps (SATA III). Max cable length 1 meter.</span>
+          <span class="def-term">SATA Power (15-pin)</span><span class="def-val">From PSU to drive. Wider than data cable. Provides 3.3V, 5V, and 12V.</span>
+          <span class="def-term">eSATA</span><span class="def-val">External SATA. For external drives. Same speed as internal SATA (6 Gbps). Does NOT carry power — external drive needs separate power source.</span>
+          <span class="def-term">M.2</span><span class="def-val">Small form-factor slot directly on motherboard. Supports both SATA (slower) and NVMe/PCIe (fast). Key types: M key (NVMe), B key (SATA/NVMe), B+M key (either). Check motherboard specs — not all M.2 slots support NVMe.</span>
+          <span class="def-term">Molex (4-pin)</span><span class="def-val">Legacy power connector for IDE drives, fans, older devices. Colors: Red = 5V, Yellow = 12V, Black = Ground. Being replaced by SATA power.</span>
+          <span class="def-term">IDE/PATA</span><span class="def-val">Legacy 40/80-pin ribbon cable. Used before SATA. Supports two drives per cable (master/slave). Obsolete in modern systems.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Adapter Cables</div>
+        <div class="def-grid">
+          <span class="def-term">Active Adapter</span><span class="def-val">Contains circuitry to convert signal format (e.g., digital to analog). Required when signal type changes. Example: DisplayPort to VGA, HDMI to VGA.</span>
+          <span class="def-term">Passive Adapter</span><span class="def-val">Converts connector shape only — no signal conversion. Signal type must be compatible. Example: Mini HDMI to HDMI, Mini DisplayPort to DisplayPort.</span>
+        </div>
+        <div class="callout callout-exam">Active vs Passive is a frequent exam topic. If converting from digital to analog (HDMI→VGA, DP→VGA) you MUST use an active adapter. Passive adapters only work between compatible signal types (digital-to-digital).</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH3 – MOTHERBOARDS ═══ -->
+  <section class="chapter" id="ch3">
+    <div class="chapter-header">
+      <span class="chapter-num">03</span>
+      <h2 class="chapter-title">Motherboards</h2>
+      <span class="chapter-obj">Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Form Factors</div>
+        <table class="data-table">
+          <thead><tr><th>Form Factor</th><th>Dimensions</th><th>PCIe Slots</th><th>Use Case</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">ATX</span></td><td>12" × 9.6"</td><td>Up to 7</td><td>Standard desktop tower. Most expandable.</td></tr>
+            <tr><td><span class="hl-gold">Micro-ATX (mATX)</span></td><td>9.6" × 9.6"</td><td>Up to 4</td><td>Budget/compact builds. Fits ATX cases too.</td></tr>
+            <tr><td><span class="hl-gold">Mini-ITX</span></td><td>6.7" × 6.7"</td><td>1</td><td>Small form factor, HTPC, NUC-style builds.</td></tr>
+            <tr><td><span class="hl-gold">E-ATX</span></td><td>12" × 13"</td><td>Up to 8</td><td>Workstation/server. Requires E-ATX case.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">Smaller form factors (mATX, Mini-ITX) fit in larger cases but larger form factors do NOT fit in smaller cases. A Mini-ITX board fits in an ATX case; an ATX board does NOT fit in a Mini-ITX case.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Key Motherboard Components</div>
+        <div class="def-grid">
+          <span class="def-term">CPU Socket</span><span class="def-val">Intel uses LGA (Land Grid Array — pins on socket). AMD uses PGA (Pin Grid Array — pins on CPU) for AM4; AM5 uses LGA. Socket type determines CPU compatibility. Never mix socket types.</span>
+          <span class="def-term">ZIF Socket</span><span class="def-val">Zero Insertion Force. Lever mechanism allows CPU to drop in with no force — prevents bent pins. Most modern CPU sockets use ZIF.</span>
+          <span class="def-term">DIMM Slots</span><span class="def-val">Holds RAM. Color-coded pairs for dual-channel. Install in matched pairs in same-colored slots for dual-channel operation.</span>
+          <span class="def-term">PCIe Slots</span><span class="def-val">x16 for GPUs. x4/x8 for capture cards, NVMe adapters, NICs. x1 for basic expansion cards. A smaller card fits in a larger slot (runs at card's max speed).</span>
+          <span class="def-term">M.2 Slot</span><span class="def-val">Connects NVMe SSDs directly to PCIe bus. Much faster than SATA. Some slots support only SATA-mode M.2 — check specs before buying an NVMe drive.</span>
+          <span class="def-term">SATA Ports</span><span class="def-val">L-shaped ports. Typically 4–8 per board. Connect HDDs, SSDs, and optical drives.</span>
+          <span class="def-term">24-pin ATX (P1)</span><span class="def-val">Main motherboard power connector from PSU. Must be fully seated — partial connection causes boot failure.</span>
+          <span class="def-term">4/8-pin EPS</span><span class="def-val">CPU auxiliary power. Near the CPU socket. Required for system to POST — often forgotten during builds.</span>
+          <span class="def-term">Front Panel Headers</span><span class="def-val">Power button, reset button, HDD activity LED, power LED, USB 2.0, USB 3.0, front audio. Tiny 1- and 2-pin connectors. Check motherboard manual for exact pin layout.</span>
+          <span class="def-term">CMOS Battery</span><span class="def-val">CR2032 lithium coin cell. Maintains BIOS/UEFI settings (date, time, boot order) when system is unpowered. When it dies: system loses date/time on every power cycle. Replace and re-enter settings.</span>
+          <span class="def-term">Chipset</span><span class="def-val">Manages communication between CPU, RAM, storage, and PCIe devices. Northbridge (now integrated into CPU) handles high-speed connections. Southbridge handles slower I/O (USB, SATA, audio).</span>
+          <span class="def-term">I/O Shield</span><span class="def-val">Metal plate installed in case before motherboard. Covers rear port cutout. Must match motherboard I/O layout — comes in the motherboard box.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Expansion Cards</div>
+        <div class="def-grid">
+          <span class="def-term">GPU (Video Card)</span><span class="def-val">Dedicated graphics processor with its own VRAM. Uses PCIe x16. Required for gaming, CAD, video editing. Has DisplayPort, HDMI, DVI outputs. Needs 6/8-pin PCIe power from PSU for high-end cards.</span>
+          <span class="def-term">Sound Card</span><span class="def-val">Dedicated audio processing. Uses PCIe x1. Improves audio quality over integrated audio. Provides dedicated DAC/ADC.</span>
+          <span class="def-term">Capture Card</span><span class="def-val">Captures video/audio input from external sources (cameras, game consoles). Used for streaming and recording. Internal (PCIe) or external (USB) versions.</span>
+          <span class="def-term">NIC</span><span class="def-val">Network Interface Card. Adds or upgrades network connectivity. Copper (RJ-45) or fiber (SFP). Can add 10G capability to a system with only 1G integrated NIC.</span>
+          <span class="def-term">Riser Card</span><span class="def-val">Extends PCIe slot to allow card installation in a different orientation. Common in small form factor cases and servers.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Motherboard Installation Order</div>
+        <div class="ts-steps">
+          <div class="ts-step">Review documentation — confirm form factor compatibility with case, CPU socket, RAM type.</div>
+          <div class="ts-step">Install I/O shield into case cutout (snap in before motherboard goes in).</div>
+          <div class="ts-step">Install standoffs into case at correct positions for form factor.</div>
+          <div class="ts-step">Pre-install CPU, CPU cooler, and RAM onto motherboard before placing it in case (easier to work on flat surface).</div>
+          <div class="ts-step">Align motherboard over standoffs and I/O shield. Secure with screws — do not overtighten.</div>
+          <div class="ts-step">Connect all power connectors (24-pin ATX, 4/8-pin CPU, PCIe power for GPU).</div>
+          <div class="ts-step">Connect data cables (SATA) and front panel headers. Perform cable management.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH4 – PSU & COOLING ═══ -->
+  <section class="chapter" id="ch4">
+    <div class="chapter-header">
+      <span class="chapter-num">04</span>
+      <h2 class="chapter-title">Power Supplies & Cooling</h2>
+      <span class="chapter-obj">Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Power Supply Units (PSU)</div>
+        <p>Converts AC wall power (110V/220V) to regulated low-voltage DC for computer components. Outputs: 3.3V (logic circuits), 5V (legacy drives, USB), 12V (motors, CPU, GPU).</p>
+        <div class="def-grid">
+          <span class="def-term">Wattage</span><span class="def-val">Total continuous power output. Size for peak load plus 20–30% headroom. Undersized PSU = random crashes and instability under load.</span>
+          <span class="def-term">80 PLUS Rating</span><span class="def-val">Efficiency certification. 80 PLUS (80%) → Bronze (82%) → Silver (85%) → Gold (87%) → Platinum (90%) → Titanium (94%). Higher = less heat, lower electricity cost.</span>
+          <span class="def-term">Modular</span><span class="def-val">All cables detachable. Best airflow and cable management. Most expensive.</span>
+          <span class="def-term">Semi-Modular</span><span class="def-val">Essential cables (24-pin, EPS) fixed. Others detachable. Balance of cost and flexibility.</span>
+          <span class="def-term">Non-Modular</span><span class="def-val">All cables permanently attached. Cheapest. Requires cable management or results in clutter.</span>
+          <span class="def-term">Redundant PSU</span><span class="def-val">Two PSUs in one server/workstation. If one fails, the other takes over. Hot-swappable. Enterprise/server standard.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">PSU Connectors</div>
+        <table class="data-table">
+          <thead><tr><th>Connector</th><th>Pins</th><th>Purpose</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">ATX Main (P1)</span></td><td>24-pin</td><td>Main motherboard power</td><td>Backward compatible with 20-pin boards via 20+4 design.</td></tr>
+            <tr><td><span class="hl-gold">EPS / CPU</span></td><td>4 or 8-pin</td><td>CPU power</td><td>Near CPU socket. Required — system won't POST without it.</td></tr>
+            <tr><td><span class="hl-gold">PCIe Power</span></td><td>6 or 8-pin</td><td>GPU power</td><td>6-pin = 75W, 8-pin = 150W. High-end GPUs need one or two.</td></tr>
+            <tr><td><span class="hl-gold">SATA Power</span></td><td>15-pin</td><td>SATA drives</td><td>Provides 3.3V, 5V, and 12V. Daisy-chained on one cable.</td></tr>
+            <tr><td><span class="hl-gold">Molex</span></td><td>4-pin</td><td>Legacy drives, fans, adapters</td><td>Red=5V, Yellow=12V, Black=Ground. Being phased out.</td></tr>
+            <tr><td><span class="hl-gold">Mini-Molex / Berg</span></td><td>4-pin</td><td>Floppy drives</td><td>Legacy. Essentially obsolete.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Cooling Systems</div>
+        <div class="def-grid">
+          <span class="def-term">Heat Sink</span><span class="def-val">Copper or aluminum finned block mounted on CPU. Draws heat away from die via conduction, dissipates into air via convection. Copper conducts heat better; aluminum is lighter and cheaper.</span>
+          <span class="def-term">Thermal Paste (TIM)</span><span class="def-val">Thermal Interface Material. Fills microscopic air gaps between CPU die and heat sink base. Critical for heat transfer — missing or dried-out paste = overheating. Apply a small pea-sized amount in center (spreads under pressure).</span>
+          <span class="def-term">CPU Fan (Active Air Cooling)</span><span class="def-val">Fan mounted on heat sink. Controlled by motherboard via PWM (Pulse Width Modulation) based on temperature. 4-pin PWM fan = variable speed. 3-pin = fixed or voltage-controlled.</span>
+          <span class="def-term">Case Fans</span><span class="def-val">Intake fans at front/bottom pull cool air in. Exhaust fans at rear/top push hot air out. Balanced airflow = optimal cooling. More exhaust than intake = negative pressure (dust in). More intake = positive pressure (dust filtered).</span>
+          <span class="def-term">Liquid Cooling (AIO)</span><span class="def-val">All-in-One liquid cooler. Water block on CPU, pump, tubing, radiator mounted to case. Quieter and more effective than air for high TDP CPUs. Radiator sizes: 120mm, 240mm, 360mm (more = more cooling).</span>
+          <span class="def-term">Custom Loop</span><span class="def-val">DIY liquid cooling with separate reservoir, pump, blocks, tubing, and radiator. Maximum cooling performance. Complex to build and maintain. Risk of leaks.</span>
+          <span class="def-term">Passive Cooling</span><span class="def-val">No fans — relies purely on heat sink surface area and convection. Silent. Limited to low-power/low-TDP systems (NUCs, embedded systems, some NAS devices).</span>
+        </div>
+        <div class="callout callout-warning">Never power on a CPU without thermal paste and a cooler attached — even briefly. A CPU without cooling can permanently damage itself within seconds of boot at full load.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH5 – PROCESSORS ═══ -->
+  <section class="chapter" id="ch5">
+    <div class="chapter-header">
+      <span class="chapter-num">05</span>
+      <h2 class="chapter-title">Processors (CPUs)</h2>
+      <span class="chapter-obj">Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">CPU Architecture</div>
+        <div class="def-grid">
+          <span class="def-term">x86 (32-bit)</span><span class="def-val">Legacy architecture. Limited to 4GB addressable RAM. Runs only 32-bit software. Still found on some embedded systems.</span>
+          <span class="def-term">x64 (64-bit)</span><span class="def-val">Current standard for PCs and servers. Theoretically addresses 16 exabytes of RAM. Runs both 32-bit and 64-bit software.</span>
+          <span class="def-term">ARM</span><span class="def-val">RISC-based. Designed for mobile and embedded (phones, tablets, IoT). Low power consumption. SoC (System on Chip) — CPU, GPU, RAM controller integrated on one die. Cannot natively run x86/x64 software without emulation.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">RISC vs CISC</div>
+        <div class="two-col">
+          <div>
+            <p class="mini-h">RISC — Reduced Instruction Set Computing</p>
+            <ul class="concept-list">
+              <li>Small, simple instruction set.</li>
+              <li>Each instruction executes in one clock cycle.</li>
+              <li>More instructions needed to complete tasks.</li>
+              <li>Lower power consumption.</li>
+              <li>Examples: ARM, MIPS, PowerPC.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mini-h">CISC — Complex Instruction Set Computing</p>
+            <ul class="concept-list">
+              <li>Large, complex instruction set.</li>
+              <li>Single instruction can execute complex tasks.</li>
+              <li>Fewer instructions needed.</li>
+              <li>Higher power consumption.</li>
+              <li>Examples: x86, x64 (Intel, AMD).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">CPU Features</div>
+        <div class="def-grid">
+          <span class="def-term">Multi-Core</span><span class="def-val">Multiple independent processing cores on one physical die. Dual-core, quad-core, octa-core, etc. Each core can execute its own thread simultaneously.</span>
+          <span class="def-term">Hyper-Threading (Intel) / SMT (AMD)</span><span class="def-val">Simultaneous Multithreading. One physical core presents as two logical processors to the OS. Improves throughput on threaded workloads by up to 30%. Not the same as having two physical cores.</span>
+          <span class="def-term">Virtualization Support</span><span class="def-val">Intel VT-x / AMD-V. Hardware-assisted virtualization. Required to run Type 1 or Type 2 hypervisors at full performance. Must be enabled in BIOS/UEFI — often disabled by default.</span>
+          <span class="def-term">Cache (L1/L2/L3)</span><span class="def-val">L1 = fastest, smallest, per-core (32–64KB). L2 = medium, per-core (256KB–1MB). L3 = largest, shared across all cores (8–64MB+). More cache = fewer slow RAM accesses.</span>
+          <span class="def-term">TDP (Thermal Design Power)</span><span class="def-val">Maximum sustained heat output in watts. Determines what cooler is required. A 65W TDP CPU needs a cooler rated for at least 65W.</span>
+          <span class="def-term">Clock Speed (GHz)</span><span class="def-val">Cycles per second. Higher = faster (within same architecture). Base clock = guaranteed speed. Boost clock = max speed under optimal conditions (temperature, power).</span>
+          <span class="def-term">Integrated Graphics (iGPU)</span><span class="def-val">GPU built into the CPU die. Uses shared system RAM. Sufficient for general computing and light media. Disabled or supplemental when a discrete GPU is present.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">CPU Families</div>
+        <table class="data-table">
+          <thead><tr><th>Intel</th><th>AMD</th><th>Use Case</th></tr></thead>
+          <tbody>
+            <tr><td>Core i3</td><td>Ryzen 3</td><td>Entry-level / budget. Office work, light tasks.</td></tr>
+            <tr><td>Core i5</td><td>Ryzen 5</td><td>Mid-range / mainstream. Best value for most users.</td></tr>
+            <tr><td>Core i7</td><td>Ryzen 7</td><td>High performance. Gaming, content creation.</td></tr>
+            <tr><td>Core i9</td><td>Ryzen 9</td><td>Enthusiast / workstation. Maximum cores and cache.</td></tr>
+            <tr><td>Xeon</td><td>EPYC / Threadripper</td><td>Server and data center. ECC RAM support, high core counts, multi-socket.</td></tr>
+            <tr><td>Celeron / Pentium</td><td>Athlon</td><td>Budget / embedded. Basic computing tasks.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH6 – RAM ═══ -->
+  <section class="chapter" id="ch6">
+    <div class="chapter-header">
+      <span class="chapter-num">06</span>
+      <h2 class="chapter-title">System Memory (RAM)</h2>
+      <span class="chapter-obj">Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">RAM Fundamentals</div>
+        <p>RAM (Random Access Memory) is volatile — loses all contents when power is removed. The CPU uses RAM to store actively accessed data and instructions for fast retrieval. More RAM = more applications can run simultaneously without swapping to disk.</p>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">DDR Generations</div>
+        <table class="data-table">
+          <thead><tr><th>Generation</th><th>Speed Range</th><th>DIMM Pins</th><th>SO-DIMM Pins</th><th>Voltage</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">DDR3</span></td><td>800–2133 MT/s</td><td>240</td><td>204</td><td>1.5V</td><td>Legacy</td></tr>
+            <tr><td><span class="hl-gold">DDR4</span></td><td>2133–3200 MT/s</td><td>288</td><td>260</td><td>1.2V</td><td>Widely deployed</td></tr>
+            <tr><td><span class="hl-gold">DDR5</span></td><td>4800+ MT/s</td><td>288</td><td>262</td><td>1.1V</td><td>Current / new systems</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-warning">DDR generations are NOT interchangeable. Each has a different notch position, different pin count (DDR3 vs DDR4 both have 240/288 pins but DDR4 DIMM is 288), and different voltage. Installing the wrong generation physically cannot seat in the slot.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Memory Module Types</div>
+        <div class="def-grid">
+          <span class="def-term">DIMM</span><span class="def-val">Dual Inline Memory Module. Full-size desktop RAM. 64-bit data bus per module.</span>
+          <span class="def-term">SO-DIMM</span><span class="def-val">Small Outline DIMM. Laptop and small form-factor systems. About half the length of a DIMM. Same electrical specifications, different physical size.</span>
+          <span class="def-term">Single-Channel</span><span class="def-val">One DIMM or mismatched DIMMs. 64-bit data path. Lower bandwidth.</span>
+          <span class="def-term">Dual-Channel</span><span class="def-val">Two matched DIMMs in paired slots (same color). 128-bit data path. Install in slots A2+B2 or A1+B1 — check motherboard manual for correct slots.</span>
+          <span class="def-term">Quad-Channel</span><span class="def-val">Four matched DIMMs. 256-bit data path. Used in workstations and servers with high-bandwidth needs.</span>
+          <span class="def-term">ECC RAM</span><span class="def-val">Error Correcting Code. Detects and corrects single-bit errors silently. Required in servers and mission-critical workstations. Requires ECC-capable CPU and motherboard. Not compatible with standard consumer boards.</span>
+          <span class="def-term">Registered (RDIMM)</span><span class="def-val">Has a register chip between the memory controller and DRAM. Allows more DIMMs per channel. Used in servers. Slightly higher latency than UDIMM.</span>
+          <span class="def-term">Unregistered (UDIMM)</span><span class="def-val">Standard consumer RAM. No register chip. Lower latency but limited to fewer DIMMs per channel.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Virtual Memory</div>
+        <p>When physical RAM is exhausted, the OS uses a portion of disk storage as an overflow — called the page file (Windows) or swap space (Linux). Virtual memory is dramatically slower than RAM (milliseconds vs nanoseconds). A system that frequently uses virtual memory needs more physical RAM. Symptom: slow performance with high disk activity.</p>
+        <div class="callout callout-exam">If a system is sluggish with constant disk thrashing, the most cost-effective fix is adding more RAM. Virtual memory is a stopgap, not a solution.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH7 – STORAGE ═══ -->
+  <section class="chapter" id="ch7">
+    <div class="chapter-header">
+      <span class="chapter-num">07</span>
+      <h2 class="chapter-title">Storage Devices</h2>
+      <span class="chapter-obj">Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Storage Types</div>
+        <table class="data-table">
+          <thead><tr><th>Type</th><th>Interface</th><th>Approx Speed</th><th>Pros</th><th>Cons</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">HDD</span></td><td>SATA</td><td>80–160 MB/s</td><td>Cheap per GB. High capacity.</td><td>Slow. Moving parts. Fragile (drops). Loud.</td></tr>
+            <tr><td><span class="hl-gold">SSD (SATA)</span></td><td>SATA</td><td>~550 MB/s</td><td>No moving parts. Quiet. Durable. Fast vs HDD.</td><td>Limited by SATA interface. More expensive per GB than HDD.</td></tr>
+            <tr><td><span class="hl-gold">SSD (NVMe)</span></td><td>PCIe/M.2</td><td>3,000–7,000 MB/s</td><td>Fastest available. Low latency.</td><td>Most expensive per GB. Can run hot without heatspreader.</td></tr>
+            <tr><td><span class="hl-gold">Optane (Intel)</span></td><td>PCIe/M.2</td><td>High IOPS</td><td>Extremely low latency. Great for cache.</td><td>Discontinued. Limited capacity options.</td></tr>
+          </tbody>
+        </table>
+        <div class="def-grid" style="margin-top:0.8rem">
+          <span class="def-term">HDD RPM Speeds</span><span class="def-val">5,400 RPM (5.5ms latency, archival/laptop), 7,200 RPM (4.2ms, standard desktop/NAS), 10,000 RPM (3ms, enterprise), 15,000 RPM (2ms, highest performance).</span>
+          <span class="def-term">SSD Wear Leveling</span><span class="def-val">Flash memory cells degrade with writes. Wear leveling distributes writes across all cells evenly to maximize lifespan. Managed by the SSD controller.</span>
+          <span class="def-term">SSD Endurance (TBW)</span><span class="def-val">Terabytes Written — manufacturer's rated total write endurance. A 600 TBW SSD can write 600TB before expected failure. Consumer SSDs: 150–600 TBW. Enterprise: 1,000+ TBW.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">RAID Levels</div>
+        <table class="data-table">
+          <thead><tr><th>RAID</th><th>Name</th><th>Min Drives</th><th>Fault Tolerance</th><th>Usable Space</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-blue">RAID 0</span></td><td>Striping</td><td>2</td><td><span class="bad">None</span></td><td>100%</td><td>Fast. Any single drive failure = total data loss.</td></tr>
+            <tr><td><span class="hl-blue">RAID 1</span></td><td>Mirroring</td><td>2</td><td><span class="good">1 drive</span></td><td>50%</td><td>Exact copy. Fastest restore. Expensive per GB.</td></tr>
+            <tr><td><span class="hl-blue">RAID 5</span></td><td>Stripe + Parity</td><td>3</td><td><span class="good">1 drive</span></td><td>(N-1) drives</td><td>Most common enterprise. Parity distributed across all drives.</td></tr>
+            <tr><td><span class="hl-blue">RAID 6</span></td><td>Double Parity</td><td>4</td><td><span class="good">2 drives</span></td><td>(N-2) drives</td><td>Better protection. Recommended for large HDDs (long rebuild time).</td></tr>
+            <tr><td><span class="hl-blue">RAID 10</span></td><td>Stripe of Mirrors</td><td>4</td><td><span class="good">1 per mirror</span></td><td>50%</td><td>Best performance + redundancy. Expensive. Ideal for databases.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">RAID is NOT a backup. RAID protects against drive failure but not against accidental deletion, ransomware, fire, or theft. Always maintain separate backups. RAID 0 has zero fault tolerance — it increases risk because losing ANY drive loses everything.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Removable Storage</div>
+        <div class="def-grid">
+          <span class="def-term">USB Flash Drive</span><span class="def-val">Portable flash memory via USB. Widely used for data transfer and bootable media.</span>
+          <span class="def-term">External HDD/SSD</span><span class="def-val">Drive in enclosure with USB/eSATA connection. USB 3.0 or better for acceptable speed.</span>
+          <span class="def-term">SD Card</span><span class="def-val">Secure Digital. Full-size SD, miniSD, microSD. Speed classes: Class 10, UHS-I, UHS-II, V30, V60, V90 (video speed class).</span>
+          <span class="def-term">Optical (CD/DVD/Blu-ray)</span><span class="def-val">Data read/written via laser. CD=700MB, DVD=4.7–8.5GB, Blu-ray=25–50GB. Used for media distribution, archival. Largely replaced by USB and streaming.</span>
+          <span class="def-term">Tape</span><span class="def-val">Magnetic tape. Sequential access only (slow). Extremely cheap per TB. Used for long-term archival backup in enterprise. LTO is current standard.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH8 – BIOS/UEFI ═══ -->
+  <section class="chapter" id="ch8">
+    <div class="chapter-header">
+      <span class="chapter-num">08</span>
+      <h2 class="chapter-title">BIOS/UEFI & Boot Process</h2>
+      <span class="chapter-obj">Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">BIOS vs UEFI</div>
+        <table class="data-table">
+          <thead><tr><th>Feature</th><th>Legacy BIOS</th><th>UEFI</th></tr></thead>
+          <tbody>
+            <tr><td>Interface</td><td>Text-only, keyboard only</td><td>Graphical, mouse support</td></tr>
+            <tr><td>Partition Table</td><td>MBR only (max 2TB, 4 primary partitions)</td><td>GPT (max 128 partitions, no practical size limit)</td></tr>
+            <tr><td>Boot Speed</td><td>Slower POST</td><td>Faster POST, supports fast boot</td></tr>
+            <tr><td>Secure Boot</td><td><span class="bad">No</span></td><td><span class="good">Yes</span></td></tr>
+            <tr><td>Drive Support</td><td>Limited to MBR drives</td><td>Full NVMe and GPT drive support</td></tr>
+            <tr><td>Architecture</td><td>16-bit</td><td>32/64-bit</td></tr>
+            <tr><td>Network Boot</td><td>Basic PXE</td><td>Full PXE and HTTP boot support</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">Windows 11 requires UEFI with Secure Boot and a TPM 2.0 chip. If a system can't run Windows 11, check UEFI and TPM settings in the firmware first before assuming incompatible hardware.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Key BIOS/UEFI Settings</div>
+        <div class="def-grid">
+          <span class="def-term">Boot Order</span><span class="def-val">Priority list of devices to attempt boot from. Set USB or optical first for installs, HDD/SSD first for normal operation. Wrong boot order = "No boot device found" error when USB is plugged in.</span>
+          <span class="def-term">Secure Boot</span><span class="def-val">Verifies OS bootloader is cryptographically signed by a trusted authority. Prevents unsigned/malicious OS from loading. Must disable for some Linux distros or custom boot scenarios.</span>
+          <span class="def-term">TPM</span><span class="def-val">Trusted Platform Module. Hardware chip (or firmware implementation — fTPM) that stores encryption keys. Required for BitLocker and Windows 11. Enable in UEFI before installing Windows.</span>
+          <span class="def-term">Supervisor/Setup Password</span><span class="def-val">Restricts access to UEFI settings. Protects against unauthorized firmware changes. Different from system/user password.</span>
+          <span class="def-term">User/System Password</span><span class="def-val">Locks the system at POST — must enter password before OS loads. Not the same as the Windows login password.</span>
+          <span class="def-term">Virtualization (VT-x/AMD-V)</span><span class="def-val">Must be enabled in UEFI for hypervisors to use hardware-assisted virtualization. Often disabled by default. Symptom if disabled: hypervisor errors or 64-bit VMs won't start.</span>
+          <span class="def-term">Fan Settings</span><span class="def-val">Control fan speed curves — balanced, cool, quiet, fanless, custom. Custom = define temperature thresholds and fan speeds.</span>
+          <span class="def-term">XMP/EXPO Profile</span><span class="def-val">Enables RAM to run at its rated speed (e.g., DDR4-3200 instead of default DDR4-2133). Must enable in UEFI — RAM ships at minimum JEDEC spec by default.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">POST (Power-On Self-Test)</div>
+        <p>When the system receives power, the CPU executes POST — a firmware-level diagnostic that checks all critical hardware before attempting to boot an OS. POST checks: CPU, RAM, video card, storage controllers, keyboard. Results communicated via beep codes (before video) or on-screen codes (after video initializes).</p>
+        <div class="def-grid">
+          <span class="def-term">Beep Codes</span><span class="def-val">Patterns of beeps indicate specific POST failures. Vary by BIOS manufacturer (AMI, Award, Phoenix). Common: 1 short = POST OK (some boards), 1 long + 2 short = video card failure (AMI). Always check motherboard documentation for specific codes.</span>
+          <span class="def-term">POST Card</span><span class="def-val">Diagnostic card that plugs into PCIe slot and displays POST codes as hexadecimal numbers. Useful when system won't POST at all and gives no beeps.</span>
+          <span class="def-term">No POST</span><span class="def-val">System powers on but nothing happens. Check: power connectors (24-pin AND 4/8-pin CPU), RAM seating, GPU seating, CMOS clear. Try booting with minimal hardware (1 stick RAM, no GPU if iGPU available).</span>
+        </div>
+        <div class="callout callout-mil">POST is like a pre-mission equipment check — you verify every piece of kit works before you step off. If something fails the check, you fix it before the mission, not during. A failed POST beep code tells you exactly which kit item is broken.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">MBR vs GPT Partition Tables</div>
+        <div class="def-grid">
+          <span class="def-term">MBR (Master Boot Record)</span><span class="def-val">Legacy partition scheme. Max 4 primary partitions (or 3 primary + 1 extended with logical partitions inside). Max 2TB drive size. Required for BIOS boot. First 512 bytes of disk contain boot code + partition table.</span>
+          <span class="def-term">GPT (GUID Partition Table)</span><span class="def-val">Modern scheme. Up to 128 partitions. No practical size limit. Required for drives >2TB. Required for UEFI boot. Stores backup partition table at end of disk for redundancy. Each partition has a GUID (Globally Unique Identifier).</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- end container part 1 -->
+
+<div class="container">
+
+  <!-- ═══ CH9 – NETWORKING HARDWARE ═══ -->
+  <section class="chapter" id="ch9">
+    <div class="chapter-header">
+      <span class="chapter-num">09</span>
+      <h2 class="chapter-title">Networking Hardware</h2>
+      <span class="chapter-obj">Domain 2</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Network Types</div>
+        <div class="def-grid">
+          <span class="def-term">LAN</span><span class="def-val">Local Area Network. Single location. Connected by switches and cables. High speed (1G–10G typical).</span>
+          <span class="def-term">WAN</span><span class="def-val">Wide Area Network. Spans multiple locations. The Internet is the largest WAN. Lower speed than LAN, higher latency.</span>
+          <span class="def-term">WLAN</span><span class="def-val">Wireless LAN. Uses 802.11 standards (Wi-Fi). Connects devices wirelessly to a LAN via WAP.</span>
+          <span class="def-term">MAN</span><span class="def-val">Metropolitan Area Network. Covers a city or campus. Larger than LAN, smaller than WAN.</span>
+          <span class="def-term">PAN</span><span class="def-val">Personal Area Network. Very short range. Bluetooth (~10m), NFC (~4cm). Connects personal devices.</span>
+          <span class="def-term">SAN</span><span class="def-val">Storage Area Network. Dedicated high-speed network for storage access. Block-level access. iSCSI or Fibre Channel.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Devices</div>
+        <div class="def-grid">
+          <span class="def-term">NIC</span><span class="def-val">Network Interface Card. Physical connection to network. Every NIC has a unique 48-bit MAC address (burned in at manufacture). First 24 bits = OUI (vendor ID). Last 24 bits = device ID.</span>
+          <span class="def-term">Hub</span><span class="def-val">Legacy Layer 1 device. Repeats signal out ALL ports. Creates one large collision domain. No intelligence. Replaced by switches. Do not use in modern networks.</span>
+          <span class="def-term">Switch</span><span class="def-val">Layer 2 device. Forwards frames using MAC address table. One collision domain per port. Builds MAC table by learning source MACs. Sends unknown MACs to all ports (flooding) until learned.</span>
+          <span class="def-term">Router</span><span class="def-val">Layer 3 device. Routes packets between networks using IP addresses and routing table. Separates broadcast domains. Connects LAN to WAN (internet).</span>
+          <span class="def-term">WAP</span><span class="def-val">Wireless Access Point. Bridges wireless clients to the wired LAN. Manages 802.11 wireless connections. Not a router — WAPs don't route; they bridge.</span>
+          <span class="def-term">Patch Panel</span><span class="def-val">Terminates structured cabling from wall outlets. Provides organized connection point to switch via short patch cords. Allows easy moves, adds, and changes without re-running cable.</span>
+          <span class="def-term">Firewall</span><span class="def-val">Filters traffic based on rules (ACLs). Stateful inspection tracks connection state. Can be hardware appliance or software. First line of defense at network perimeter.</span>
+          <span class="def-term">Proxy Server</span><span class="def-val">Intermediary for web requests. Caches content, filters URLs, logs activity. Clients send requests to proxy; proxy fetches on their behalf. Hides internal IP addresses.</span>
+          <span class="def-term">Load Balancer</span><span class="def-val">Distributes incoming traffic across multiple servers. Prevents any single server from being overwhelmed. Round-robin, least connections, or weighted distribution methods.</span>
+          <span class="def-term">UTM</span><span class="def-val">Unified Threat Management. Combines firewall, IDS/IPS, antivirus, spam filter, VPN in one appliance. Common in SMB environments.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Managed vs Unmanaged Switches</div>
+        <div class="two-col">
+          <div>
+            <p class="mini-h">Unmanaged Switch</p>
+            <ul class="concept-list">
+              <li>Plug and play — no configuration needed or possible.</li>
+              <li>No VLANs, no port security, no SNMP monitoring.</li>
+              <li>Cheap. Suitable for home and small offices.</li>
+              <li>No visibility into traffic or port status.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mini-h">Managed Switch</p>
+            <ul class="concept-list">
+              <li>Fully configurable via CLI, web GUI, or SNMP.</li>
+              <li>Supports VLANs, STP, port security, QoS, port mirroring.</li>
+              <li>SNMP monitoring for centralized network management.</li>
+              <li>Required for enterprise environments.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Power over Ethernet (PoE)</div>
+        <table class="data-table">
+          <thead><tr><th>Standard</th><th>Max Power</th><th>Common Name</th><th>Use Cases</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">802.3af</span></td><td>15.4W delivered / 12.95W at device</td><td>PoE (Type 1)</td><td>VoIP phones, basic IP cameras, WAPs.</td></tr>
+            <tr><td><span class="hl-gold">802.3at</span></td><td>30W delivered / 25.5W at device</td><td>PoE+ (Type 2)</td><td>High-power WAPs, PTZ cameras, small switches.</td></tr>
+            <tr><td><span class="hl-gold">802.3bt</span></td><td>60W (Type 3) / 100W (Type 4)</td><td>PoE++ / 4PPoE</td><td>Laptops, TVs, large PTZ cameras, mini PCs.</td></tr>
+          </tbody>
+        </table>
+        <div class="def-grid" style="margin-top:0.8rem">
+          <span class="def-term">PoE Switch</span><span class="def-val">Switch with PoE built in. Powers devices on the same cable as data. Simplest solution — one cable per device.</span>
+          <span class="def-term">PoE Injector</span><span class="def-val">Adds PoE to a single port of a non-PoE switch. Sits between switch and device. One injector per device.</span>
+          <span class="def-term">PoE Splitter</span><span class="def-val">Takes a PoE connection and splits it into separate data and power outputs. Used for devices without built-in PoE.</span>
+        </div>
+        <div class="callout callout-exam">PoE budget: a 48-port PoE switch may have a total PoE budget of 370W. If all 48 ports draw 802.3af (15.4W each = 739W total), it will not power all devices simultaneously. Calculate total PoE load vs switch budget before deploying.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH10 – NETWORK CABLING ═══ -->
+  <section class="chapter" id="ch10">
+    <div class="chapter-header">
+      <span class="chapter-num">10</span>
+      <h2 class="chapter-title">Network Cabling</h2>
+      <span class="chapter-obj">Domain 2</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Twisted Pair Cable Categories</div>
+        <table class="data-table">
+          <thead><tr><th>Cat</th><th>Max Speed</th><th>Max Distance</th><th>Standard</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Cat 5</span></td><td>100 Mbps</td><td>100m</td><td>100BASE-TX</td><td>Obsolete. Do not install.</td></tr>
+            <tr><td><span class="hl-gold">Cat 5e</span></td><td>1 Gbps</td><td>100m</td><td>1000BASE-T</td><td>Most common existing install. Minimum acceptable new install.</td></tr>
+            <tr><td><span class="hl-gold">Cat 6</span></td><td>1 Gbps (100m) / 10 Gbps (55m)</td><td>100m</td><td>10GBASE-T</td><td>Common new install. 10G limited to 55m.</td></tr>
+            <tr><td><span class="hl-gold">Cat 6a</span></td><td>10 Gbps</td><td>100m</td><td>10GBASE-T</td><td>Augmented Cat 6. Full 10G at 100m. Thicker, stiffer cable.</td></tr>
+            <tr><td><span class="hl-gold">Cat 7</span></td><td>10 Gbps</td><td>100m</td><td>10GBASE-T</td><td>Individually shielded pairs + overall shield. Data center use.</td></tr>
+            <tr><td><span class="hl-gold">Cat 8</span></td><td>25–40 Gbps</td><td>30m</td><td>25/40GBASE-T</td><td>Data center only. Short runs between ToR switches and servers.</td></tr>
+          </tbody>
+        </table>
+        <div class="def-grid" style="margin-top:0.8rem">
+          <span class="def-term">UTP</span><span class="def-val">Unshielded Twisted Pair. Most common. No shielding. Susceptible to EMI. Used in offices.</span>
+          <span class="def-term">STP</span><span class="def-val">Shielded Twisted Pair. Overall foil or braid shield. Used near interference sources (motors, fluorescent lights).</span>
+          <span class="def-term">F/UTP</span><span class="def-val">Foiled/Unshielded — overall foil shield, unshielded pairs.</span>
+          <span class="def-term">S/FTP</span><span class="def-val">Braided shield overall + foiled individual pairs. Maximum shielding. Used in Cat 7 and Cat 8.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">RJ-45 Wiring Standards</div>
+        <div class="two-col">
+          <div>
+            <p class="mini-h">T568A (Pin Order)</p>
+            <ul class="concept-list">
+              <li>Pin 1: Green/White</li>
+              <li>Pin 2: Green</li>
+              <li>Pin 3: Orange/White</li>
+              <li>Pin 4: Blue</li>
+              <li>Pin 5: Blue/White</li>
+              <li>Pin 6: Orange</li>
+              <li>Pin 7: Brown/White</li>
+              <li>Pin 8: Brown</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mini-h">T568B (Pin Order) — US Standard</p>
+            <ul class="concept-list">
+              <li>Pin 1: Orange/White</li>
+              <li>Pin 2: Orange</li>
+              <li>Pin 3: Green/White</li>
+              <li>Pin 4: Blue</li>
+              <li>Pin 5: Blue/White</li>
+              <li>Pin 6: Green</li>
+              <li>Pin 7: Brown/White</li>
+              <li>Pin 8: Brown</li>
+            </ul>
+          </div>
+        </div>
+        <div class="def-grid" style="margin-top:0.8rem">
+          <span class="def-term">Straight-Through</span><span class="def-val">Same standard (T568B/T568B or T568A/T568A) on both ends. Connects different device types: PC to switch, switch to router.</span>
+          <span class="def-term">Crossover</span><span class="def-val">T568A on one end, T568B on the other. Connects same device types directly: PC to PC, switch to switch. Modern devices use Auto-MDIX and don't require crossover cables.</span>
+          <span class="def-term">RJ-11</span><span class="def-val">6-pin (6P2C or 6P4C). Used for telephone lines, DSL modems. Smaller than RJ-45. Not interchangeable with RJ-45.</span>
+        </div>
+        <div class="callout callout-exam">T568B is the US standard and the most common. Memorize the pin order: Orange/White, Orange, Green/White, Blue, Blue/White, Green, Brown/White, Brown. The exam will test which color goes on which pin.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Cable Tools</div>
+        <div class="def-grid">
+          <span class="def-term">Crimper</span><span class="def-val">Attaches RJ-45 (or RJ-11) connector to cable. Cuts, strips, and crimps in one motion. Requires correct connector for cable gauge.</span>
+          <span class="def-term">Punchdown Tool</span><span class="def-val">Terminates individual conductors into IDC (Insulation Displacement Connector) slots on patch panels and keystone jacks. 110-type and Krone are common blade styles.</span>
+          <span class="def-term">Cable Tester</span><span class="def-val">Verifies continuity and correct pin mapping on completed cable. Catches wiring errors, opens, and shorts. Basic testers check continuity; advanced testers measure signal characteristics.</span>
+          <span class="def-term">Toner Probe</span><span class="def-val">Two-part tool: tone generator clips to one end, probe traces the cable through walls, bundles, and ceilings by detecting the tone. Used to find and label unknown cable runs.</span>
+          <span class="def-term">Loopback Plug</span><span class="def-val">Connects TX to RX pins. Tests NIC/transceiver functionality in isolation. Confirms port can send and receive without needing a switch or cable run.</span>
+          <span class="def-term">Cable Stripper</span><span class="def-val">Removes outer jacket without nicking conductors. Use before crimping or punchdown. Correct depth setting is critical.</span>
+          <span class="def-term">Network TAP</span><span class="def-val">Intercepts network traffic for monitoring/analysis. Passive TAP copies traffic without affecting it. Active TAP may introduce slight delay. Used for packet capture and IDS deployment.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Fiber Optic Cable</div>
+        <div class="two-col">
+          <div>
+            <p class="mini-h">Single-Mode Fiber (SMF)</p>
+            <ul class="concept-list">
+              <li>Core: 9 µm. One light path. Laser source.</li>
+              <li>Long distance: up to 40km+ for some standards.</li>
+              <li>Jacket color: Yellow.</li>
+              <li>Used for inter-building, campus, WAN links.</li>
+              <li>More expensive transceivers.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mini-h">Multi-Mode Fiber (MMF)</p>
+            <ul class="concept-list">
+              <li>Core: 50 or 62.5 µm. Multiple light paths.</li>
+              <li>Short distance: up to ~550m (OM4) at 10G.</li>
+              <li>Jacket: Orange (OM1/OM2), Aqua (OM3/OM4), Lime (OM5).</li>
+              <li>Used intra-building, data center, short runs.</li>
+              <li>Less expensive transceivers (LED/VCSEL).</li>
+            </ul>
+          </div>
+        </div>
+        <p class="mini-h">Fiber Connectors</p>
+        <div class="def-grid">
+          <span class="def-term">LC (Lucent/Local Connector)</span><span class="def-val">Small form-factor. RJ-45-style latch. Most common in modern enterprise and data center. Used with SFP/SFP+ transceivers.</span>
+          <span class="def-term">SC (Subscriber Connector)</span><span class="def-val">Square. Push-pull mechanism. Older standard. Still common in some deployments.</span>
+          <span class="def-term">ST (Straight Tip)</span><span class="def-val">Round. Bayonet twist-lock. Older standard. Used in legacy installations and some military/government networks.</span>
+          <span class="def-term">MT-RJ</span><span class="def-val">Duplex connector in a small footprint. Both fibers in one connector. Less common.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Coaxial Cable</div>
+        <div class="def-grid">
+          <span class="def-term">Structure</span><span class="def-val">Inner conductor → dielectric insulator → braided shield → outer jacket. The shield provides EMI protection and ground reference.</span>
+          <span class="def-term">F-Type Connector</span><span class="def-val">Threaded connector used for CATV (cable TV) and cable modem connections. Screw-on connection. The center conductor of the coax acts as the pin.</span>
+          <span class="def-term">BNC Connector</span><span class="def-val">Bayonet Neill-Concelman. Twist-lock coax connector. Used in older 10BASE-2 Ethernet (Thinnet), CCTV, and test equipment.</span>
+          <span class="def-term">RG-6</span><span class="def-val">Modern coax standard for CATV and satellite. Thicker conductor, better shielding than RG-59. Use for cable modem and antenna runs.</span>
+          <span class="def-term">RG-59</span><span class="def-val">Older coax. Thinner. Used for short CCTV runs. Higher signal loss over distance than RG-6.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Copper Cable Problems</div>
+        <div class="def-grid">
+          <span class="def-term">Attenuation</span><span class="def-val">Signal weakens over distance. Why there are maximum cable length limits. Exceeding limits = data errors, dropped connections.</span>
+          <span class="def-term">Crosstalk</span><span class="def-val">Signal from one wire pair interferes with adjacent pair. NEXT = Near-End Crosstalk (at transmitting end). FEXT = Far-End Crosstalk (at receiving end). Twisting the pairs reduces crosstalk.</span>
+          <span class="def-term">EMI</span><span class="def-val">Electromagnetic Interference from external sources (motors, fluorescent lights, microwave ovens). STP or conduit mitigates EMI.</span>
+          <span class="def-term">Open</span><span class="def-val">Broken conductor — no continuity. Shows as open on cable tester. Cause: sharp bend, crushing, bad crimp, cut wire.</span>
+          <span class="def-term">Short</span><span class="def-val">Two conductors touching that shouldn't be. Can be partial (resistive short) or full. Cause: bad crimp, over-stripped insulation.</span>
+          <span class="def-term">Impedance Mismatch</span><span class="def-val">Cable impedance doesn't match device. Common with coax. Causes signal reflections and data errors.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH11 – IP ADDRESSING ═══ -->
+  <section class="chapter" id="ch11">
+    <div class="chapter-header">
+      <span class="chapter-num">11</span>
+      <h2 class="chapter-title">IP Addressing & Network Configuration</h2>
+      <span class="chapter-obj">Domain 2</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Internet Connection Types</div>
+        <div class="def-grid">
+          <span class="def-term">DSL</span><span class="def-val">Digital Subscriber Line. Uses existing phone lines. ADSL = asymmetric (faster download than upload). VDSL = faster. Max speed limited by distance from provider's CO (Central Office).</span>
+          <span class="def-term">Cable</span><span class="def-val">Uses CATV coax infrastructure. F-type connector. DOCSIS standard. Faster than DSL. Shared bandwidth with neighbors (slows during peak hours).</span>
+          <span class="def-term">Fiber (FTTH/FTTP)</span><span class="def-val">Fiber to the Home/Premises. Fastest consumer option. Symmetrical speeds (same upload and download). ONT (Optical Network Terminal) converts fiber to Ethernet at premises.</span>
+          <span class="def-term">Fixed Wireless</span><span class="def-val">Point-to-point or point-to-multipoint radio link. Requires line of sight. Used in rural areas without cable/fiber infrastructure.</span>
+          <span class="def-term">Cellular (4G LTE / 5G)</span><span class="def-val">Mobile data. 4G LTE: 10–50 Mbps typical. 5G Sub-6: 100–300 Mbps. 5G mmWave: 1+ Gbps (short range). Used as primary or failover connection.</span>
+          <span class="def-term">Satellite</span><span class="def-val">Available anywhere with sky view. High latency (600ms+ geostationary, ~20-40ms Starlink LEO). Starlink dramatically improved satellite viability. Weather-sensitive.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">IPv4 Addressing</div>
+        <div class="def-grid">
+          <span class="def-term">Format</span><span class="def-val">32-bit address. Written in dotted-decimal: four octets 0–255. Example: 192.168.1.100</span>
+          <span class="def-term">Subnet Mask</span><span class="def-val">Defines network vs host portion. 255.255.255.0 = /24 = last octet is host. 255.255.0.0 = /16 = last two octets are host.</span>
+          <span class="def-term">Private Ranges</span><span class="def-val">10.0.0.0/8 (Class A), 172.16.0.0–172.31.255.255/12 (Class B), 192.168.0.0/16 (Class C). Not routable on internet. Require NAT to reach public internet.</span>
+          <span class="def-term">Loopback</span><span class="def-val">127.0.0.1. Always refers to the local machine. Used to test TCP/IP stack without network hardware.</span>
+          <span class="def-term">APIPA</span><span class="def-val">169.254.x.x / 169.254.0.0/16. Automatically assigned when DHCP fails. Device can only reach other APIPA addresses on same segment. Symptom of DHCP issue.</span>
+          <span class="def-term">Broadcast</span><span class="def-val">Last address in a subnet. Example: 192.168.1.255 in a /24. Sent to all hosts in subnet. Routers do not forward broadcasts.</span>
+          <span class="def-term">Default Gateway</span><span class="def-val">Router's IP on the local subnet. Traffic destined outside local subnet is sent here. Wrong or missing gateway = no internet, but local LAN still works.</span>
+        </div>
+        <div class="callout callout-exam">Classful addressing for the exam: Class A = 1–126.x.x.x (/8). Class B = 128–191.x.x.x (/16). Class C = 192–223.x.x.x (/24). Class D = 224–239 (multicast). Class E = 240–255 (reserved/experimental). 127.x.x.x = loopback (not Class A routable).</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">IPv6 Addressing</div>
+        <div class="def-grid">
+          <span class="def-term">Format</span><span class="def-val">128-bit. Written as 8 groups of 4 hex digits separated by colons. Example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334</span>
+          <span class="def-term">Shortening Rules</span><span class="def-val">1) Remove leading zeros within groups: 0042 → 42. 2) Replace one consecutive group of all-zero hextets with :: (only once per address). Example: 2001:db8::1</span>
+          <span class="def-term">Loopback</span><span class="def-val">::1 (equivalent of IPv4 127.0.0.1)</span>
+          <span class="def-term">Link-Local</span><span class="def-val">FE80::/10. Auto-configured on every IPv6 interface. Scope limited to local link — not routed. Equivalent of IPv4 APIPA but always present, not a fault indicator.</span>
+          <span class="def-term">Global Unicast</span><span class="def-val">2000::/3. Publicly routable IPv6 addresses. Equivalent of public IPv4.</span>
+          <span class="def-term">No Broadcast</span><span class="def-val">IPv6 uses multicast instead of broadcast. All-nodes multicast: FF02::1. All-routers multicast: FF02::2.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">TCP vs UDP</div>
+        <table class="data-table">
+          <thead><tr><th>Feature</th><th>TCP</th><th>UDP</th></tr></thead>
+          <tbody>
+            <tr><td>Connection</td><td>Connection-oriented (3-way handshake: SYN → SYN-ACK → ACK)</td><td>Connectionless. Send and forget.</td></tr>
+            <tr><td>Reliability</td><td>Guaranteed delivery. Retransmits lost packets.</td><td>No guarantee. Packets may arrive out of order or not at all.</td></tr>
+            <tr><td>Speed</td><td>Slower (overhead from acknowledgments)</td><td>Faster (no handshake, no ACKs)</td></tr>
+            <tr><td>Order</td><td>Sequenced — reassembled in correct order</td><td>Unsequenced — application must handle</td></tr>
+            <tr><td>Use Cases</td><td>HTTP/S, FTP, SSH, SMTP, email — anything where accuracy matters</td><td>DNS, DHCP, VoIP, video streaming, gaming — speed over accuracy</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Well-Known Ports</div>
+        <div class="port-grid">
+          <div class="port-item"><span class="port-num">20/21</span><span class="port-proto">TCP</span><span class="port-name">File Transfer Protocol</span><span class="port-abbr">FTP</span></div>
+          <div class="port-item"><span class="port-num">22</span><span class="port-proto">TCP</span><span class="port-name">Secure Shell / SFTP</span><span class="port-abbr">SSH</span></div>
+          <div class="port-item"><span class="port-num">23</span><span class="port-proto">TCP</span><span class="port-name">Telnet (insecure)</span><span class="port-abbr">Telnet</span></div>
+          <div class="port-item"><span class="port-num">25</span><span class="port-proto">TCP</span><span class="port-name">Simple Mail Transfer Protocol</span><span class="port-abbr">SMTP</span></div>
+          <div class="port-item"><span class="port-num">53</span><span class="port-proto">TCP/UDP</span><span class="port-name">Domain Name Service</span><span class="port-abbr">DNS</span></div>
+          <div class="port-item"><span class="port-num">67/68</span><span class="port-proto">UDP</span><span class="port-name">Dynamic Host Config Protocol</span><span class="port-abbr">DHCP</span></div>
+          <div class="port-item"><span class="port-num">80</span><span class="port-proto">TCP</span><span class="port-name">Hypertext Transfer Protocol</span><span class="port-abbr">HTTP</span></div>
+          <div class="port-item"><span class="port-num">110</span><span class="port-proto">TCP</span><span class="port-name">Post Office Protocol v3</span><span class="port-abbr">POP3</span></div>
+          <div class="port-item"><span class="port-num">123</span><span class="port-proto">UDP</span><span class="port-name">Network Time Protocol</span><span class="port-abbr">NTP</span></div>
+          <div class="port-item"><span class="port-num">137–139</span><span class="port-proto">TCP/UDP</span><span class="port-name">NetBIOS (legacy Windows)</span><span class="port-abbr">NetBIOS</span></div>
+          <div class="port-item"><span class="port-num">143</span><span class="port-proto">TCP</span><span class="port-name">Internet Message Access Protocol</span><span class="port-abbr">IMAP</span></div>
+          <div class="port-item"><span class="port-num">161/162</span><span class="port-proto">UDP</span><span class="port-name">Network Mgmt Protocol (trap)</span><span class="port-abbr">SNMP</span></div>
+          <div class="port-item"><span class="port-num">389</span><span class="port-proto">TCP</span><span class="port-name">Lightweight Directory Access</span><span class="port-abbr">LDAP</span></div>
+          <div class="port-item"><span class="port-num">443</span><span class="port-proto">TCP</span><span class="port-name">HTTP Secure (HTTP over TLS)</span><span class="port-abbr">HTTPS</span></div>
+          <div class="port-item"><span class="port-num">445</span><span class="port-proto">TCP</span><span class="port-name">SMB / Windows File Sharing</span><span class="port-abbr">SMB</span></div>
+          <div class="port-item"><span class="port-num">514</span><span class="port-proto">UDP</span><span class="port-name">Syslog (centralized logging)</span><span class="port-abbr">Syslog</span></div>
+          <div class="port-item"><span class="port-num">587</span><span class="port-proto">TCP</span><span class="port-name">SMTP (submission, authenticated)</span><span class="port-abbr">SMTP Alt</span></div>
+          <div class="port-item"><span class="port-num">993</span><span class="port-proto">TCP</span><span class="port-name">IMAP over SSL/TLS</span><span class="port-abbr">IMAPS</span></div>
+          <div class="port-item"><span class="port-num">995</span><span class="port-proto">TCP</span><span class="port-name">POP3 over SSL/TLS</span><span class="port-abbr">POP3S</span></div>
+          <div class="port-item"><span class="port-num">3389</span><span class="port-proto">TCP</span><span class="port-name">Remote Desktop Protocol</span><span class="port-abbr">RDP</span></div>
+        </div>
+        <div class="callout callout-exam">Ports 0–1023 = Well-Known (reserved for system services). Ports 1024–49151 = Registered (assigned by IANA for apps). Ports 49152–65535 = Dynamic/Ephemeral (used by clients for outbound connections). The exam primarily tests the well-known ports above.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Configuration Concepts</div>
+        <div class="def-grid">
+          <span class="def-term">DHCP</span><span class="def-val">Automatically assigns IP, subnet mask, default gateway, and DNS server. DORA process: Discover → Offer → Request → Acknowledge. Lease-based — IP returned to pool when lease expires.</span>
+          <span class="def-term">DNS</span><span class="def-val">Resolves domain names to IP addresses. Hierarchical: Root → TLD (.com/.org) → Authoritative server. Local cache checked first, then recursive resolver.</span>
+          <span class="def-term">DNS Record Types</span><span class="def-val">A = IPv4 address. AAAA = IPv6 address. CNAME = alias to another name. MX = mail server for domain. PTR = reverse lookup (IP to name). SOA = start of authority (zone info). NS = name server for domain. TXT = text records (SPF, DKIM, domain verification).</span>
+          <span class="def-term">VLAN</span><span class="def-val">Virtual LAN. Logically segments a switch into separate broadcast domains. Traffic between VLANs requires routing (Layer 3). Improves security and performance. Configured on managed switches.</span>
+          <span class="def-term">VPN</span><span class="def-val">Virtual Private Network. Encrypted tunnel over the internet. Makes remote users appear as if on the local LAN. Protocols: OpenVPN, WireGuard, IPsec, L2TP/IPsec, SSL/TLS VPN.</span>
+          <span class="def-term">NAT</span><span class="def-val">Network Address Translation. Translates private IP addresses to public IP address for internet access. PAT (Port Address Translation) / overload NAT allows many private IPs to share one public IP using port numbers to track connections.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH12 – NETWORK SERVICES ═══ -->
+  <section class="chapter" id="ch12">
+    <div class="chapter-header">
+      <span class="chapter-num">12</span>
+      <h2 class="chapter-title">Network Services & Troubleshooting</h2>
+      <span class="chapter-obj">Domain 2 / Domain 5</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Server Types & Ports</div>
+        <table class="data-table">
+          <thead><tr><th>Server Type</th><th>Function</th><th>Ports</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">File/Print</span></td><td>Shares files and printers on network</td><td>445 (SMB), 139 (NetBIOS)</td></tr>
+            <tr><td><span class="hl-gold">Web</span></td><td>Hosts websites and web applications</td><td>80 (HTTP), 443 (HTTPS)</td></tr>
+            <tr><td><span class="hl-gold">Mail (Send)</span></td><td>Sends email between domains</td><td>25 (SMTP), 587 (submission)</td></tr>
+            <tr><td><span class="hl-gold">Mail (POP3)</span></td><td>Downloads mail to client (removes from server)</td><td>110 (plain), 995 (TLS)</td></tr>
+            <tr><td><span class="hl-gold">Mail (IMAP)</span></td><td>Syncs mail across devices (stays on server)</td><td>143 (plain), 993 (TLS)</td></tr>
+            <tr><td><span class="hl-gold">DNS</span></td><td>Resolves domain names to IP addresses</td><td>53 (TCP/UDP)</td></tr>
+            <tr><td><span class="hl-gold">DHCP</span></td><td>Assigns IP configuration automatically</td><td>67 (server), 68 (client) UDP</td></tr>
+            <tr><td><span class="hl-gold">LDAP / AD</span></td><td>Directory services, authentication</td><td>389 (plain), 636 (TLS)</td></tr>
+            <tr><td><span class="hl-gold">Syslog</span></td><td>Centralized log collection</td><td>514 UDP</td></tr>
+            <tr><td><span class="hl-gold">NTP</span></td><td>Time synchronization</td><td>123 UDP</td></tr>
+            <tr><td><span class="hl-gold">SNMP</span></td><td>Network device monitoring</td><td>161 (queries), 162 (traps) UDP</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Appliances & Special Systems</div>
+        <div class="def-grid">
+          <span class="def-term">Proxy Server</span><span class="def-val">Inspects HTTP/S requests. Blocks inappropriate sites. Caches content to reduce bandwidth. Logs user browsing. Hides internal IP addresses from internet.</span>
+          <span class="def-term">UTM</span><span class="def-val">Unified Threat Management. Single appliance combining: firewall, IDS/IPS, antivirus, spam filtering, VPN, content filtering. Common in SMB environments.</span>
+          <span class="def-term">IDS</span><span class="def-val">Intrusion Detection System. Monitors traffic and alerts on suspicious activity. Passive — detects but does NOT block.</span>
+          <span class="def-term">IPS</span><span class="def-val">Intrusion Prevention System. Inline device that actively blocks suspicious traffic. Can cause false positives that disrupt legitimate traffic.</span>
+          <span class="def-term">SCADA/ICS</span><span class="def-val">Supervisory Control and Data Acquisition / Industrial Control Systems. Controls industrial equipment (power plants, water treatment, manufacturing). Critical infrastructure — high security risk if networked. Legacy systems often lack modern security.</span>
+          <span class="def-term">IoT Devices</span><span class="def-val">Internet of Things. Smart devices on the network (cameras, thermostats, speakers, locks). Often have weak default security. Isolate on separate VLAN. Change default passwords. Keep firmware updated.</span>
+          <span class="def-term">Legacy/EOL Systems</span><span class="def-val">End-of-Life hardware or software — no longer receives vendor patches or support. Security risk. Isolate from main network. Plan migration. Cannot be left internet-facing.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Troubleshooting</div>
+        <p class="mini-h">Wired Connectivity</p>
+        <ul class="concept-list">
+          <li>Check patch cord at both ends. Try a known-good cable first.</li>
+          <li>Verify link lights on NIC and switch port — both should be solid or blinking green.</li>
+          <li>Use loopback plug to test NIC in isolation. Use cable tester to verify cable.</li>
+          <li>Check speed and duplex settings — auto/auto mismatch can cause poor performance.</li>
+          <li>Check for port flapping (link cycling up and down) — indicates bad cable or NIC.</li>
+        </ul>
+        <p class="mini-h">Wireless Issues</p>
+        <ul class="concept-list">
+          <li>Verify Wi-Fi is enabled (not airplane mode).</li>
+          <li>Check signal strength — move closer to WAP or add another access point.</li>
+          <li>Check for channel overlap/interference — use Wi-Fi analyzer to find best channel.</li>
+          <li>2.4 GHz = longer range, more interference. 5 GHz = shorter range, faster, less congestion.</li>
+          <li>Check SSID and security key are correct. Forget network and reconnect if authentication fails.</li>
+        </ul>
+        <p class="mini-h">VoIP Issues</p>
+        <ul class="concept-list">
+          <li><strong>Latency</strong> — one-way delay in ms. Should be &lt;150ms for acceptable voice quality.</li>
+          <li><strong>Jitter</strong> — variation in packet delay. Should be &lt;30ms. Causes choppy/robotic audio.</li>
+          <li><strong>Packet Loss</strong> — missing packets. Even 1% loss degrades voice quality noticeably.</li>
+          <li><strong>QoS (Quality of Service)</strong> — prioritizes VoIP traffic over less time-sensitive traffic on the network. Configure on managed switches and routers.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH13 – VIRTUALIZATION & CLOUD ═══ -->
+  <section class="chapter" id="ch13">
+    <div class="chapter-header">
+      <span class="chapter-num">13</span>
+      <h2 class="chapter-title">Virtualization & Cloud Computing</h2>
+      <span class="chapter-obj">Domain 4</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Hypervisor Types</div>
+        <div class="def-grid">
+          <span class="def-term">Type 1 — Bare Metal</span><span class="def-val">Runs directly on hardware. No host OS layer. Best performance and resource efficiency. Enterprise standard. Examples: VMware ESXi, Microsoft Hyper-V (server role), Proxmox, Xen, KVM.</span>
+          <span class="def-term">Type 2 — Hosted</span><span class="def-val">Runs as an application on top of a host OS. Host OS must run first. Easier to set up. Slightly lower performance. Examples: VMware Workstation, Oracle VirtualBox, Parallels (macOS).</span>
+        </div>
+        <div class="callout callout-exam">Type 1 = enterprise/server (bare metal, most efficient). Type 2 = desktop/developer (hosted on OS, easy to use). The exam will describe a scenario and ask which type. If it mentions running on a server with no other OS, it's Type 1. If it mentions running inside Windows or macOS, it's Type 2.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Uses for Virtualization</div>
+        <ul class="concept-list">
+          <li><strong>Sandboxing</strong> — test software or malware in an isolated environment without risk to the host.</li>
+          <li><strong>Legacy support</strong> — run old OS/software that won't run on modern hardware or current OS.</li>
+          <li><strong>Cross-platform testing</strong> — run Linux, Windows, and macOS on the same physical machine.</li>
+          <li><strong>Training / lab environments</strong> — spin up and destroy environments without affecting production.</li>
+          <li><strong>Server consolidation</strong> — replace many underutilized physical servers with VMs on fewer hosts. Reduces hardware, power, and cooling costs.</li>
+          <li><strong>Container virtualization</strong> — lightweight OS-level virtualization sharing the host kernel. Docker is the standard. Much faster startup than full VMs. Less isolation.</li>
+          <li><strong>Application virtualization</strong> — run apps in isolated containers without full OS. Example: Citrix XenApp.</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Cloud Deployment & Service Models</div>
+        <div class="two-col">
+          <div>
+            <p class="mini-h">Deployment Models</p>
+            <div class="def-grid">
+              <span class="def-term">Public</span><span class="def-val">Multi-tenant. CSP owns and manages. AWS, Azure, GCP. Cheapest, least control.</span>
+              <span class="def-term">Private</span><span class="def-val">Single-organization. On-prem or hosted. Most control, highest cost.</span>
+              <span class="def-term">Community</span><span class="def-val">Shared by orgs with common needs (government, healthcare). Split cost and control.</span>
+              <span class="def-term">Hybrid</span><span class="def-val">Mix of above. Sensitive data on-prem, scalable workloads in public cloud.</span>
+            </div>
+          </div>
+          <div>
+            <p class="mini-h">Service Models</p>
+            <div class="def-grid">
+              <span class="def-term">IaaS</span><span class="def-val">You manage OS and up. Provider manages hardware. Target: sysadmins. Example: EC2, Azure VMs.</span>
+              <span class="def-term">PaaS</span><span class="def-val">You manage app and data. Provider manages OS+. Target: developers. Example: App Engine.</span>
+              <span class="def-term">SaaS</span><span class="def-val">Provider manages everything. You just use it. Target: end users. Example: Office 365, Gmail.</span>
+            </div>
+          </div>
+        </div>
+        <div class="callout callout-exam">Remember the target audience: IaaS → sysadmins. PaaS → developers/DBAs. SaaS → end users. The more you manage, the more control and responsibility you have. The more the provider manages, the less control but also less overhead.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH14 – MOBILE DEVICES ═══ -->
+  <section class="chapter" id="ch14">
+    <div class="chapter-header">
+      <span class="chapter-num">14</span>
+      <h2 class="chapter-title">Mobile Devices</h2>
+      <span class="chapter-obj">Domain 1</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Laptop Components</div>
+        <div class="def-grid">
+          <span class="def-term">RAM (SO-DIMM)</span><span class="def-val">Laptop uses SO-DIMM (half the length of desktop DIMM). DDR4 or DDR5 typically. Some ultrabooks have RAM soldered to motherboard — not upgradeable.</span>
+          <span class="def-term">Storage</span><span class="def-val">M.2 NVMe SSD (fastest), M.2 SATA SSD, or 2.5" SATA SSD. Ultrabooks often use soldered NVMe — check specs before purchase if upgradeability matters.</span>
+          <span class="def-term">Battery</span><span class="def-val">Rechargeable lithium-ion or lithium-polymer. Internal (ultrabooks) or removable (older laptops). Capacity measured in mAh or Wh. Swollen battery = discontinue use immediately (fire/explosion risk).</span>
+          <span class="def-term">Display</span><span class="def-val">LCD or OLED panel. Connected to motherboard via eDP (embedded DisplayPort) ribbon cable. Backlight (CCFL legacy or LED). Inverter required for CCFL backlights (legacy).</span>
+          <span class="def-term">Wireless NIC</span><span class="def-val">M.2 Key E or mini PCIe card. Supports Wi-Fi and often Bluetooth on same card. Antenna wires run through display lid.</span>
+          <span class="def-term">Touchpad</span><span class="def-val">Built-in pointing device. Connected via internal USB or PS/2. Some have integrated left/right buttons; others use entire surface as button (clickpad).</span>
+          <span class="def-term">Webcam / Mic</span><span class="def-val">Built into display bezel. Connected via internal USB. Can be physically covered with shutter on privacy-conscious designs.</span>
+          <span class="def-term">Biometrics</span><span class="def-val">Fingerprint reader (in touchpad or power button) or IR camera (Windows Hello facial recognition). Hello = PIN, fingerprint, facial recognition, or security key.</span>
+          <span class="def-term">NFC</span><span class="def-val">Near Field Communication. ~4cm range. Used for contactless payments, pairing peripherals, device tap-to-connect.</span>
+          <span class="def-term">Digitizer</span><span class="def-val">Touchscreen layer over display. Capacitive (finger touch) or active pen (pressure-sensitive stylus with digitizer beneath). Used in convertible laptops and tablets.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Mobile Device Connectivity</div>
+        <div class="def-grid">
+          <span class="def-term">Wi-Fi (802.11)</span><span class="def-val">Wireless LAN. 802.11a/b/g = legacy. 802.11n (Wi-Fi 4) = 600 Mbps, 2.4/5 GHz. 802.11ac (Wi-Fi 5) = 3.5 Gbps, 5 GHz. 802.11ax (Wi-Fi 6/6E) = 9.6 Gbps, 2.4/5/6 GHz.</span>
+          <span class="def-term">Bluetooth</span><span class="def-val">Short-range (~10m). Used for peripherals (headphones, keyboards, mice), file transfer, car audio. Pairing: devices exchange keys during initial connection. BT 5.0+ = 40m range, faster transfers.</span>
+          <span class="def-term">Cellular</span><span class="def-val">Requires SIM or eSIM. 4G LTE = 10–150 Mbps. 5G Sub-6 = 100–300 Mbps. 5G mmWave = 1+ Gbps (dense urban only). Hotspot shares cellular data over Wi-Fi.</span>
+          <span class="def-term">GPS</span><span class="def-val">Global Positioning System. Passive — receives signals from satellites, doesn't transmit. Used for navigation and location services. Assisted GPS (A-GPS) uses cellular/Wi-Fi for faster fix.</span>
+          <span class="def-term">NFC</span><span class="def-val">~4cm range. Contactless payments (Apple Pay, Google Pay), badge access, quick device pairing (NFC-initiated Bluetooth connection).</span>
+          <span class="def-term">Airplane Mode</span><span class="def-val">Disables ALL wireless radios (cellular, Wi-Fi, Bluetooth, NFC). Wi-Fi and Bluetooth can be re-enabled individually while in airplane mode on most devices.</span>
+          <span class="def-term">IR (Infrared)</span><span class="def-val">Requires line-of-sight. Short range. Used as TV remote replacement on some phones. Not common in modern devices.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Mobile Troubleshooting</div>
+        <div class="def-grid">
+          <span class="def-term">Swollen Battery</span><span class="def-val">Stop using immediately. Lithium swelling indicates chemical breakdown. Risk of fire/rupture. Do not puncture or charge. Take to certified recycler/repair shop.</span>
+          <span class="def-term">Overheating</span><span class="def-val">Check for background apps consuming CPU. Remove case if charging (reduces heat dissipation). Avoid charging in direct sunlight. Throttling = device slowing itself to reduce heat.</span>
+          <span class="def-term">Screen Issues</span><span class="def-val">Dim display = failed backlight or low brightness setting. Ghost touch = digitizer calibration or damage. Dead pixels = permanent display defect. Flickering = loose display cable or failing display.</span>
+          <span class="def-term">Poor Battery Life</span><span class="def-val">Check screen brightness (biggest drain), background app refresh, location services, push email. Battery health degrades over charge cycles — below 80% health = consider replacement.</span>
+          <span class="def-term">Connectivity Issues</span><span class="def-val">Toggle airplane mode on/off to reset all radios. Forget and reconnect to Wi-Fi. Check cellular signal strength. Reset network settings if persistent (erases saved Wi-Fi passwords).</span>
+          <span class="def-term">Malware Indicators</span><span class="def-val">Unexpected data usage, excessive battery drain, unauthorized camera/mic access, unexpected pop-ups, new unknown apps, slow performance. Factory reset as last resort.</span>
+          <span class="def-term">Improper Charging</span><span class="def-val">Use correct wattage charger — too low charges slowly, too high can damage battery. Heat during charging = normal in moderation, but extreme heat indicates fault. Check cable and port for damage/debris.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Laptop Disassembly Best Practices</div>
+        <ul class="concept-list">
+          <li>Document every step — photograph before and during disassembly.</li>
+          <li>Use proper tools: spudger/pry tool, Phillips and Torx screwdrivers, tweezers.</li>
+          <li>Keep screws organized — use a magnetic mat or tape screws to labeled paper.</li>
+          <li><strong>Disconnect battery before working on any internal components.</strong></li>
+          <li>Use ESD wrist strap — laptops are more ESD-sensitive than desktops due to compact design.</li>
+          <li>Reference manufacturer documentation or iFixit guides for model-specific disassembly.</li>
+          <li>Ribbon cables and ZIF connectors require care — lift the locking tab before pulling cable.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH15 – PRINTERS ═══ -->
+  <section class="chapter" id="ch15">
+    <div class="chapter-header">
+      <span class="chapter-num">15</span>
+      <h2 class="chapter-title">Printers & Multifunction Devices</h2>
+      <span class="chapter-obj">Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Printer Types</div>
+        <table class="data-table">
+          <thead><tr><th>Type</th><th>Technology</th><th>Speed</th><th>Quality</th><th>Key Use Case</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Laser</span></td><td>Toner (dry powder) fused with heat</td><td><span class="good">Fast</span></td><td><span class="good">High</span></td><td>Office documents. High volume. Low cost per page.</td></tr>
+            <tr><td><span class="hl-gold">Inkjet</span></td><td>Liquid ink sprayed through nozzles</td><td><span class="neutral">Medium</span></td><td><span class="good">Excellent color</span></td><td>Photo printing, home use, low volume color.</td></tr>
+            <tr><td><span class="hl-gold">Thermal</span></td><td>Heat on thermochromic paper</td><td><span class="good">Fast</span></td><td><span class="neutral">Low res</span></td><td>Receipts, labels, shipping. No ink/toner needed.</td></tr>
+            <tr><td><span class="hl-gold">Impact / Dot Matrix</span></td><td>Pins strike inked ribbon onto paper</td><td><span class="bad">Slow</span></td><td><span class="bad">Low</span></td><td>Multi-part carbon forms. Loud. Noisy environments.</td></tr>
+            <tr><td><span class="hl-gold">3D Printer</span></td><td>FDM (filament) or SLA (resin)</td><td><span class="bad">Slow</span></td><td><span class="good">3D objects</span></td><td>Prototyping, custom parts, models.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Laser Printing Process — 7 Steps</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Processing</strong> — Print job sent to printer. Data converted to raster image by RIP (Raster Image Processor).</div>
+          <div class="ts-step"><strong>Charging</strong> — Primary corona wire or charge roller applies a uniform high-voltage negative charge to the entire drum surface.</div>
+          <div class="ts-step"><strong>Exposing (Writing)</strong> — Laser beam selectively removes negative charge from drum where toner should adhere, creating a latent image.</div>
+          <div class="ts-step"><strong>Developing</strong> — Negatively charged toner particles attracted to the less-negative (exposed) areas of the drum. Toner sticks to latent image.</div>
+          <div class="ts-step"><strong>Transferring</strong> — Transfer corona wire or roller applies a positive charge to the paper, pulling negatively charged toner off the drum onto the paper.</div>
+          <div class="ts-step"><strong>Fusing</strong> — Fuser assembly (heat roller + pressure roller) melts toner into the paper fibers using heat (~400°F) and pressure. Permanently bonds toner.</div>
+          <div class="ts-step"><strong>Cleaning</strong> — Cleaning blade scrapes remaining toner off drum. Erase lamp (or charge roller) removes residual charge, preparing drum for next page.</div>
+        </div>
+        <div class="callout callout-exam">The 7 steps in order: Processing → Charging → Exposing → Developing → Transferring → Fusing → Cleaning. A memory trick: <strong>PCEDT FC</strong> or "Pretty Cool Elephants Don't Typically Fight Cats." This is one of the most tested topics on Core 1.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Printer Troubleshooting</div>
+        <table class="data-table">
+          <thead><tr><th>Symptom</th><th>Likely Cause</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>Blank pages</td><td>Empty toner/ink, print head issue, protective strip not removed from new toner</td><td>Replace consumable, shake toner, remove protective tape</td></tr>
+            <tr><td>Vertical lines or streaks</td><td>Dirty or scratched drum, low toner, dirty corona wire</td><td>Clean drum/corona wire, replace toner or drum</td></tr>
+            <tr><td>Smudged output (laser)</td><td>Fuser not reaching temperature, fuser worn out</td><td>Replace fuser assembly</td></tr>
+            <tr><td>Smudged output (inkjet)</td><td>Clogged print head, wrong paper type</td><td>Run print head cleaning utility, use correct paper</td></tr>
+            <tr><td>Ghost images (faded repeat)</td><td>Drum not cleaned fully, fuser problem</td><td>Replace drum unit or fuser</td></tr>
+            <tr><td>Paper jams</td><td>Worn pickup rollers, wrong paper, paper not properly loaded, debris in paper path</td><td>Clean/replace rollers, use correct paper, clear debris</td></tr>
+            <tr><td>Wrinkled pages</td><td>Worn exit rollers, damp paper</td><td>Replace exit rollers, use fresh paper stored correctly</td></tr>
+            <tr><td>Garbled/incorrect output</td><td>Wrong or corrupt driver, PDL mismatch (PostScript vs PCL)</td><td>Reinstall correct driver, verify PDL settings</td></tr>
+            <tr><td>Color misregistration</td><td>Color planes misaligned</td><td>Run calibration utility</td></tr>
+            <tr><td>Grinding noise</td><td>Worn gears, debris in paper path</td><td>Clean paper path, replace gear assembly if worn</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Printer Maintenance by Type</div>
+        <div class="def-grid">
+          <span class="def-term">Laser — Toner</span><span class="def-val">Replace when output fades. Shake cartridge gently to redistribute toner before replacing for a few more pages. Remove protective film strip from new cartridges.</span>
+          <span class="def-term">Laser — Maintenance Kit</span><span class="def-val">Includes fuser, transfer roller, and pickup rollers. Replace at manufacturer-specified page count (typically 200,000–300,000 pages). Reset page count after replacement.</span>
+          <span class="def-term">Laser — Drum</span><span class="def-val">Separate from toner in some designs. Replace when output quality degrades despite fresh toner. Protect from light — photosensitive.</span>
+          <span class="def-term">Inkjet — Cartridges</span><span class="def-val">Replace when ink low. Use OEM or compatible cartridges. Some printers require all colors even for B&W.</span>
+          <span class="def-term">Inkjet — Print Head</span><span class="def-val">Run cleaning cycle from printer software. Multiple cleans may be needed. Excessive cleaning wastes ink. Allow head to dry if clogged — sometimes resolves overnight.</span>
+          <span class="def-term">Thermal — Heating Element</span><span class="def-val">Clean with isopropyl alcohol and cotton swab. Replace paper rolls — thermal paper has a limited shelf life and is heat/light sensitive.</span>
+          <span class="def-term">Impact — Ribbon</span><span class="def-val">Replace ink ribbon when output fades. Replace print head if pins are worn or broken.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Printer Connectivity & Sharing</div>
+        <ul class="concept-list">
+          <li><strong>USB</strong> — most common local connection. Direct from PC to printer.</li>
+          <li><strong>Ethernet</strong> — network printing. Printer gets IP address. All LAN users can print. Preferred for offices.</li>
+          <li><strong>Wi-Fi</strong> — wireless network printing. Same as Ethernet for users but wireless. Wi-Fi Direct allows direct connection without a WAP.</li>
+          <li><strong>Bluetooth</strong> — short-range. Mobile printing from phone/tablet. Limited range and speed.</li>
+          <li><strong>Cloud Printing</strong> — Google Cloud Print (deprecated), HP ePrint, AirPrint (Apple), Mopria (Android). Print from anywhere via internet.</li>
+          <li><strong>Printer Sharing</strong> — connect printer to one Windows PC, share it. Other users connect via <code>\\computername\printername</code>. Host PC must be on for print jobs to process.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH16 – SECURITY ═══ -->
+  <section class="chapter" id="ch16">
+    <div class="chapter-header">
+      <span class="chapter-num">16</span>
+      <h2 class="chapter-title">Security Fundamentals</h2>
+      <span class="chapter-obj">Domain 2 / Domain 3</span>
+    </div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">CIA Triad</div>
+        <div class="def-grid">
+          <span class="def-term">Confidentiality</span><span class="def-val">Only authorized users can access data. Enforced by: encryption, access controls, authentication, classification. Breach = data disclosed to unauthorized party.</span>
+          <span class="def-term">Integrity</span><span class="def-val">Data has not been tampered with or altered. Enforced by: hashing, digital signatures, checksums, access controls. Breach = unauthorized modification of data.</span>
+          <span class="def-term">Availability</span><span class="def-val">Systems and data accessible when needed by authorized users. Enforced by: redundancy, backups, RAID, failover, UPS. Breach = system or data inaccessible (ransomware, DDoS, hardware failure).</span>
+        </div>
+        <div class="callout callout-mil">CIA Triad = the mission. Confidentiality = need-to-know. Integrity = you can trust the intel is accurate. Availability = comms are up when you need them. Lose any leg and the mission is compromised.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Identity and Access Management</div>
+        <div class="def-grid">
+          <span class="def-term">Identification</span><span class="def-val">Who you claim to be. Username, employee ID, email address. Not yet verified.</span>
+          <span class="def-term">Authentication</span><span class="def-val">Proving your claimed identity. Password, PIN, biometric, smart card, security token.</span>
+          <span class="def-term">Authorization</span><span class="def-val">What you are allowed to access after authentication. Determined by permissions, group membership, ACLs.</span>
+          <span class="def-term">Accounting/Auditing</span><span class="def-val">Tracking what authenticated users did. Logs of access, changes, and actions. Non-repudiation — user cannot deny actions.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Security Principles</div>
+        <div class="def-grid">
+          <span class="def-term">Least Privilege</span><span class="def-val">Users and processes receive only the minimum permissions required for their job function. Nothing more. Limits damage from compromised accounts or insider threats.</span>
+          <span class="def-term">Implicit Deny</span><span class="def-val">Default deny unless explicitly permitted. Firewalls and ACLs deny all traffic not explicitly allowed. Safer than explicit deny (must list everything you want to block).</span>
+          <span class="def-term">Zero Trust</span><span class="def-val">Never trust, always verify. Every access request authenticated and authorized regardless of network location. Assumes breach — even internal traffic is treated as untrusted.</span>
+          <span class="def-term">Defense in Depth</span><span class="def-val">Multiple layers of security. No single control is relied upon. Physical → Network → Host → Application → Data layers. Each layer slows or stops an attacker who bypasses another.</span>
+          <span class="def-term">Separation of Duties</span><span class="def-val">No single person can complete a sensitive process alone. Requires two or more people. Prevents fraud and insider threats in critical processes.</span>
+          <span class="def-term">Need to Know</span><span class="def-val">Access granted only to information required for the specific role. Even users with the same clearance level cannot access each other's data if they don't need it.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Authentication Methods</div>
+        <div class="def-grid">
+          <span class="def-term">MFA Factors</span><span class="def-val">Something you <strong>know</strong> (password, PIN, security question). Something you <strong>have</strong> (smart card, hardware token, phone/authenticator app). Something you <strong>are</strong> (fingerprint, retina, facial recognition, voice). True MFA requires two DIFFERENT factor types.</span>
+          <span class="def-term">Windows Hello</span><span class="def-val">Microsoft's biometric and PIN authentication framework. Options: PIN, fingerprint, facial recognition (IR camera), FIDO2 security key. PIN is device-specific — not same risk as password.</span>
+          <span class="def-term">SSO</span><span class="def-val">Single Sign-On. Authenticate once, access multiple systems. SAML is common protocol. Active Directory provides SSO for Windows domain. Reduces password fatigue but single point of failure if compromised.</span>
+          <span class="def-term">OTP</span><span class="def-val">One-Time Password. Valid for one use only. TOTP = Time-based (Google Authenticator, expires in 30s). HOTP = Counter-based. Prevents replay attacks.</span>
+          <span class="def-term">Hard Token</span><span class="def-val">Physical security key (YubiKey, RSA SecurID). Generates OTP or uses FIDO2 protocol. Phishing-resistant — code tied to specific website URL.</span>
+          <span class="def-term">Soft Token</span><span class="def-val">Authenticator app on smartphone (Google Authenticator, Microsoft Authenticator, Duo). Generates TOTP codes. Less secure than hard token (phone can be compromised) but more secure than SMS.</span>
+        </div>
+        <div class="callout callout-exam">Password + PIN = NOT MFA (both "something you know"). Password + authenticator app = MFA ("know" + "have"). Fingerprint + facial recognition = NOT MFA (both "something you are"). Two factors must come from two DIFFERENT categories.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">NTFS vs Share Permissions</div>
+        <div class="def-grid">
+          <span class="def-term">NTFS Permissions</span><span class="def-val">Apply locally (direct access) AND over network. Granular: Full Control, Modify, Read &amp; Execute, List Folder Contents, Read, Write. Inherited from parent folder by default. Most restrictive wins when multiple permissions conflict.</span>
+          <span class="def-term">Share Permissions</span><span class="def-val">Apply ONLY when accessing over the network (not locally). Simple: Full Control, Change, Read. Easier to manage but less granular.</span>
+          <span class="def-term">Effective Permissions</span><span class="def-val">When BOTH NTFS and Share permissions apply (network access), the MOST RESTRICTIVE of the two combinations wins. Example: NTFS = Full Control, Share = Read → Effective = Read over network.</span>
+          <span class="def-term">Inheritance</span><span class="def-val">NTFS permissions flow down from parent folder to subfolders and files. Can break inheritance on specific folders to set unique permissions. Explicit permissions override inherited.</span>
+        </div>
+        <div class="callout callout-exam">Local access = only NTFS permissions apply. Network access = both NTFS and Share permissions apply, most restrictive combination wins. The exam loves this distinction — read the scenario carefully to determine if the user is accessing locally or over the network.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Encryption Concepts</div>
+        <div class="def-grid">
+          <span class="def-term">Hashing</span><span class="def-val">One-way function. Input → fixed-length digest. Cannot reverse. Used to verify integrity (MD5, SHA-256). Same input always produces same hash. Different input = completely different hash (avalanche effect).</span>
+          <span class="def-term">Symmetric Encryption</span><span class="def-val">Same key encrypts and decrypts. Fast. Key distribution is the challenge — how do you securely share the key? AES, 3DES. Used for bulk data encryption.</span>
+          <span class="def-term">Asymmetric Encryption</span><span class="def-val">Public/private key pair. Public key encrypts (anyone can encrypt). Private key decrypts (only owner can decrypt). Solves key distribution problem. Slow. RSA, ECC. Used for key exchange and authentication.</span>
+          <span class="def-term">Digital Signature</span><span class="def-val">Sender hashes message, encrypts hash with their PRIVATE key. Receiver decrypts with sender's PUBLIC key, re-hashes and compares. Proves identity (authentication) and message integrity.</span>
+          <span class="def-term">TPM</span><span class="def-val">Trusted Platform Module. Hardware chip (or firmware fTPM) that securely stores cryptographic keys. Used by BitLocker for full-disk encryption. Keys never leave TPM in plaintext. Required for Windows 11.</span>
+          <span class="def-term">HSM</span><span class="def-val">Hardware Security Module. Removable/external dedicated device for cryptographic key storage and operations. Used in enterprise PKI and payment systems. More portable than onboard TPM.</span>
+          <span class="def-term">BitLocker</span><span class="def-val">Windows full-disk encryption. Requires TPM or USB startup key. Encrypts entire volume. Protects data if drive is removed. Recovery key should be backed up to AD or Microsoft account.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  COMPTIA A+ CORE 1 · 220-1201 · STAR V LEARNING CENTERS · JACKSONVILLE, FL · SYNTHESIZED FOR ACTIVE STUDY USE
+</footer>
+
+</body>
+</html>
